@@ -1,0 +1,1 @@
+Replace the placeholder files with your real course artifacts before submission. Required paths: compiled-pts-and-products.pdf, project-documentation.pdf, project-presentation.mp4 (if applicable), and optionally resume.pdf.
