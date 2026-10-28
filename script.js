@@ -1,0 +1,20 @@
+// Site interactions: theme, navigation, reflections, and hero titles.
+(function(){const html=document.documentElement,button=document.getElementById('theme');
+const saved=localStorage.getItem('benjo-theme');
+if(saved==='light'||(!saved&&matchMedia('(prefers-color-scheme: light)').matches))html.classList.add('light');
+button.textContent=html.classList.contains('light')?'☾':'☀';
+button.onclick=()=>{html.classList.toggle('light');
+localStorage.setItem('benjo-theme',html.classList.contains('light')?'light':'dark');
+button.textContent=html.classList.contains('light')?'☾':'☀'};
+const menu=document.getElementById('menu'),nav=document.getElementById('mobile-nav');
+menu.onclick=()=>{let open=nav.classList.toggle('open');
+menu.setAttribute('aria-expanded',String(open))};
+nav.querySelectorAll('a').forEach(a=>a.onclick=()=>{nav.classList.remove('open');
+menu.setAttribute('aria-expanded','false')});
+document.querySelectorAll('[data-term]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-term]').forEach(n=>n.setAttribute('aria-selected',String(n===b)));
+document.getElementById('term-title').textContent=b.dataset.term});
+document.getElementById('contact-form').onsubmit=e=>{e.preventDefault();
+document.getElementById('form-status').textContent='Please add a real contact email before enabling message submissions.'};
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let words=['Aspiring Software Developer','Lifelong Learner','Building with Code'],i=0;
+setInterval(()=>{i=(i+1)%words.length;
+document.getElementById('role').textContent=words[i]},3500)}})();
