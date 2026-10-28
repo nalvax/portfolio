@@ -1,21 +1,21 @@
 // Edit this file to personalize every section. Do not publish personal details you do not want public.
 export const portfolio = {
   site: {
-    title: "TODO: Full Name | JRU E-Portfolio",
+    title: "TODO: | E-Portfolio",
     description: "TODO: A Computer Programming 1 student e-portfolio at Jose Rizal University.",
     year: 2026,
   },
   person: {
-    fullName: "TODO: Full Name",
-    firstName: "TODO",
-    initials: "TODO",
+    fullName: "Benjo Terrado",
+    firstName: "Benjo",
+    initials: "B",
     school: "Jose Rizal University",
     program: "TODO: Program (e.g. BS Information Technology)",
     yearLevel: "TODO: Year level",
     tagline: "Learning by building, one program at a time.",
     rotatingTitles: ["TODO: Aspiring Software Developer", "TODO: Lifelong Learner"],
     statusPill: "Student at JRU",
-    location: "TODO: City, Country",
+    location: "Mandaluyong City, Philippines",
     email: "TODO@example.com",
     socials: [
       { label: "GitHub", url: "TODO: https://github.com/your-username" },
