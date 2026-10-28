@@ -7,9 +7,9 @@ import { portfolio } from "@/content/portfolio";
 
 const sections = [
   ["welcome", "Welcome"], ["about", "About Me"], ["academics", "Academics & Relevant Works"],
-  ["experience", "Work Experience / Internships / Immersions"], ["seminars", "Seminars / Trainings Attended"],
-  ["organizations", "Organization & Community Involvement"], ["awards", "Awards & Recognitions"],
-  ["other-info", "Other Information"], ["reflections", "Term Reflections"],
+  ["experience", "Experience"], ["seminars", "Seminars"],
+  ["organizations", "Organizations"], ["awards", "Awards"],
+  ["other-info", "Other Info"], ["reflections", "Reflections"],
 ] as const;
 
 function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {

@@ -35,7 +35,7 @@ export const portfolio = {
   academics: {
     compiledWorks: { title: "Compiled PTs and Products", file: "/files/compiled-pts-and-products.pdf", description: "A collection of performance tasks, machine problems, activities, seatwork, and other course outputs." },
     documentation: { title: "Project Documentation", file: "/files/project-documentation.pdf", description: "Project background, requirements, design, and implementation notes. If applicable." },
-    videoPresentation: { title: "Video Project Presentation", embedUrl: null as string | null, file: "/files/project-presentation.mp4" as string | null, description: "A recorded walkthrough of the project. If applicable." },
+    videoPresentation: { title: "Video Project Presentation", embedUrl: null as string | null, file: null as string | null, description: "A recorded walkthrough of the project. If applicable." },
     works: [] as { title: string; description: string; tech: string[]; link?: string }[],
   },
   experience: [] as { role: string; org: string; type: "Work" | "Internship" | "Immersion"; start: string; end: string; location?: string; bullets: string[] }[],
