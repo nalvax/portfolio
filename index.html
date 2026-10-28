@@ -1,35 +1,227 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Benjo's Computer Programming 1 E-Portfolio at Jose Rizal University.">
 <meta name="theme-color" content="#0b0f0c">
 <title>Benjo | JRU E-Portfolio</title>
-<style>
-:root{--bg:#0b0e0c;--surface:#141915;--surface2:#1c241e;--text:#f2f6f0;--muted:#a0aca2;--border:#2b352d;--accent:#a3e635;--buttontext:#16200a;color-scheme:dark}
-html.light{--bg:#f9faf8;--surface:#fff;--surface2:#eef4e9;--text:#1d2820;--muted:#58685d;--border:#dce4d9;--accent:#7dbd20;--buttontext:#fff;color-scheme:light}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.header{height:76px;position:sticky;top:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:10}.header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{background:var(--accent);color:var(--buttontext);width:38px;height:38px;border-radius:11px;display:grid;place-items:center}.nav{display:flex;gap:15px;align-items:center}.nav a{font-size:12px;color:var(--muted)}.nav a:hover,.nav a.active{color:var(--accent)}.controls{display:flex;gap:8px}.toggle{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:9px 12px}.menubtn{display:none}.mobile{display:none}.hero{min-height:calc(100svh - 76px);display:flex;align-items:center;position:relative;padding:80px 0;overflow:hidden}.hero:before{content:"";position:absolute;right:-180px;top:8%;width:650px;height:650px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 13%,transparent),transparent 65%);pointer-events:none}.hero-body{position:relative;max-width:830px}.pill,.chip{display:inline-flex;align-items:center;padding:6px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:99px;color:var(--muted);font-size:12px}.dot{width:7px;height:7px;background:var(--accent);border-radius:50%;margin-right:8px}.mono,.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.07em;text-transform:uppercase}.hero .eyebrow{margin-top:30px}.hero h1{font-weight:800;font-size:clamp(3.5rem,10vw,7rem);letter-spacing:-.075em;line-height:1.02;margin:20px 0}.hero h1 em{font-style:normal;color:var(--accent)}.lead{font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:760px;margin:0}.role{color:var(--accent);font-size:13px;margin-top:24px;min-height:22px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;font-weight:700;font-size:14px;border-radius:99px;border:1px solid var(--border)}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--accent);color:var(--buttontext);border-color:var(--accent)}.btn.secondary{background:var(--surface)}.scroll{display:inline-block;margin-top:70px;font-size:11px;color:var(--muted)}.section{padding:104px 0;border-top:1px solid var(--border)}h2{font-size:clamp(2rem,5vw,3.25rem);line-height:1.1;letter-spacing:-.055em;margin:13px 0 12px}.desc{color:var(--muted);max-width:680px;margin:0 0 34px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}.card{border-radius:18px;padding:24px;background:var(--surface);border:1px solid var(--border);transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-3px);border-color:var(--accent)}.card h3{margin:6px 0 10px}.card p,.muted{color:var(--muted)}.card p{font-size:14px}.chip{margin:3px 5px 3px 0}.empty{padding:27px;border:1px dashed var(--border);border-radius:16px;color:var(--muted);background:var(--surface)}.about{display:grid;grid-template-columns:minmax(220px,0.8fr) 1.2fr;gap:26px}.portrait{min-height:280px;background:var(--surface2);border:1px solid var(--border);border-radius:18px;display:grid;place-items:center;text-align:center;padding:25px;color:var(--muted)}.portrait-icon{font-size:46px;display:block}.timeline{padding-left:25px;border-left:2px solid var(--border)}.timeline .card{position:relative}.timeline .card:before{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--accent);top:30px;left:-32px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.tabs button{background:var(--surface);color:var(--text);border:1px solid var(--border);padding:9px 18px;border-radius:99px}.tabs button[aria-selected=true]{background:var(--accent);color:var(--buttontext)}.contact{display:grid;grid-template-columns:1fr 1fr;gap:25px}.field{display:block;margin:0 0 15px}.field span{display:block;font-size:13px;margin-bottom:6px}.field input,.field textarea{background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:12px;width:100%}.field textarea{min-height:130px;resize:vertical}.footer{padding:28px 0;border-top:1px solid var(--border);color:var(--muted);font-size:13px}.footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}.skip{position:absolute;top:-100px;left:10px;background:var(--accent);color:var(--buttontext);padding:10px;z-index:99}.skip:focus{top:10px}
-@media(max-width:1120px){.nav{gap:9px}.nav a{font-size:11px}}@media(max-width:950px){.nav{display:none}.menubtn{display:block}.mobile.open{display:grid;gap:0;background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px}.mobile a{padding:9px;border-bottom:1px solid var(--border)}}@media(max-width:700px){.section{padding:75px 0}.about,.contact{grid-template-columns:1fr}.hero{padding:70px 0}}@media(max-width:450px){.wrap{width:calc(100% - 32px)}.hero h1{font-size:clamp(3.2rem,13vw,5rem)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.btn{transition:none}}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#welcome">Skip to content</a>
-<header class="header"><div class="wrap"><a class="brand" href="#welcome"><span class="logo">B</span><span>e-portfolio<span style="color:var(--accent)">.</span></span></a><nav class="nav" aria-label="Main navigation"><a href="#welcome">Welcome</a><a href="#about">About Me</a><a href="#academics">Academics & Relevant Works</a><a href="#experience">Experience</a><a href="#seminars">Seminars</a><a href="#organizations">Organizations</a><a href="#awards">Awards</a><a href="#other">Other Info</a><a href="#reflections">Reflections</a></nav><div class="controls"><button id="theme" class="toggle" aria-label="Toggle theme">☀</button><button id="menu" class="toggle menubtn" aria-expanded="false" aria-controls="mobile-nav">☰</button></div></div><nav id="mobile-nav" class="mobile" aria-label="Mobile navigation"><a href="#welcome">Welcome</a><a href="#about">About Me</a><a href="#academics">Academics & Relevant Works</a><a href="#experience">Work Experience / Internships / Immersions</a><a href="#seminars">Seminars / Trainings Attended</a><a href="#organizations">Organization & Community Involvement</a><a href="#awards">Awards & Recognitions</a><a href="#other">Other Information</a><a href="#reflections">Term Reflections</a><a href="#contact">Contact</a></nav></header>
+<header class="header">
+<div class="wrap">
+<a class="brand" href="#welcome">
+<span class="logo">B</span>
+<span>e-portfolio<span style="color:var(--accent)">.</span>
+</span>
+</a>
+<nav class="nav" aria-label="Main navigation">
+<a href="#welcome">Welcome</a>
+<a href="#about">About Me</a>
+<a href="#academics">Academics & Relevant Works</a>
+<a href="#experience">Experience</a>
+<a href="#seminars">Seminars</a>
+<a href="#organizations">Organizations</a>
+<a href="#awards">Awards</a>
+<a href="#other">Other Info</a>
+<a href="#reflections">Reflections</a>
+</nav>
+<div class="controls">
+<button id="theme" class="toggle" aria-label="Toggle theme">☀</button>
+<button id="menu" class="toggle menubtn" aria-expanded="false" aria-controls="mobile-nav">☰</button>
+</div>
+</div>
+<nav id="mobile-nav" class="mobile" aria-label="Mobile navigation">
+<a href="#welcome">Welcome</a>
+<a href="#about">About Me</a>
+<a href="#academics">Academics & Relevant Works</a>
+<a href="#experience">Work Experience / Internships / Immersions</a>
+<a href="#seminars">Seminars / Trainings Attended</a>
+<a href="#organizations">Organization & Community Involvement</a>
+<a href="#awards">Awards & Recognitions</a>
+<a href="#other">Other Information</a>
+<a href="#reflections">Term Reflections</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
 <main>
-<section class="hero" id="welcome"><div class="wrap"><div class="hero-body"><span class="pill"><span class="dot"></span>Student at JRU</span><p class="eyebrow">HELLO WORLD — WELCOME TO MY PORTFOLIO</p><h1>Hi, I'm <em>Benjo.</em></h1><p class="lead">Computer Programming 1 · Jose Rizal University<br>Learning by building, one program at a time.</p><p class="role mono" id="role">Aspiring Software Developer</p><div class="actions"><a class="btn primary" href="#academics">View My Work ↗</a><a class="btn secondary" href="#contact">Get In Touch ✉</a></div><a class="scroll mono" href="#about">↓ SCROLL TO EXPLORE</a></div></div></section>
-<section class="section" id="about"><div class="wrap"><span class="eyebrow">// about</span><h2>About Me</h2><p class="desc">A little about my background, interests, skills, and goals.</p><div class="about"><div class="portrait"><div><span class="portrait-icon">🎓</span><p>Add your portrait to <code>public/images/portrait.jpg</code></p></div></div><div><div class="empty">Personal introduction coming soon. Add your own biography and interests.</div><p><b>School:</b> Jose Rizal University<br><b>Program:</b> <span class="muted">To be added</span><br><b>Year level:</b> <span class="muted">To be added</span></p><h3>Skills & Tools</h3><span class="chip">Java</span><span class="chip">HTML & CSS</span><span class="chip">VS Code</span><span class="chip">Git</span><h3>Goals</h3><p class="muted">Career and learning goals coming soon.</p></div></div></div></section>
-<section class="section" id="academics"><div class="wrap"><span class="eyebrow">// academics</span><h2>Academics & Relevant Works</h2><p class="desc">Artifacts, course outputs, and projects from Computer Programming 1.</p><div class="grid"><article class="card"><span class="eyebrow">01 / PDF</span><h3>Compiled PTs and Products</h3><p>Performance tasks, machine problems, activities, and course outputs.</p><a class="btn secondary" href="public/files/compiled-pts-and-products.pdf" target="_blank" rel="noopener noreferrer">View PDF ↗</a></article><article class="card"><span class="eyebrow">02 / PDF</span><h3>Project Documentation</h3><p>Project design and implementation documentation, if applicable.</p><a class="btn secondary" href="public/files/project-documentation.pdf" target="_blank" rel="noopener noreferrer">View PDF ↗</a></article><article class="card"><span class="eyebrow">03 / VIDEO</span><h3>Video Project Presentation</h3><p>Recorded project walkthrough, if applicable.</p><span class="chip">Coming soon</span></article></div></div></section>
-<section class="section" id="experience"><div class="wrap"><span class="eyebrow">// experience</span><h2>Work Experience / Internships / Immersions</h2><p class="desc">Professional experience, responsibilities, and lessons learned.</p><div class="timeline"><div class="empty">Experience entries coming soon.</div></div></div></section>
-<section class="section" id="seminars"><div class="wrap"><span class="eyebrow">// training</span><h2>Seminars / Trainings Attended</h2><p class="desc">Learning opportunities, events, and certifications.</p><div class="empty">Seminars and training records coming soon.</div></div></section>
-<section class="section" id="organizations"><div class="wrap"><span class="eyebrow">// involvement</span><h2>Organization & Community Involvement</h2><p class="desc">In-campus and out-of-campus contributions.</p><div class="empty">Organization entries coming soon.</div></div></section>
-<section class="section" id="awards"><div class="wrap"><span class="eyebrow">// recognition</span><h2>Awards & Recognitions</h2><p class="desc">Achievements, awards, and recognitions.</p><div class="empty">Awards and recognitions coming soon.</div></div></section>
-<section class="section" id="other"><div class="wrap"><span class="eyebrow">// extra</span><h2>Other Information</h2><p class="desc">Additional information about activities and growth at JRU.</p><div class="empty">Additional information coming soon.</div></div></section>
-<section class="section" id="reflections"><div class="wrap"><span class="eyebrow">// learning journal</span><h2>Term Reflections</h2><p class="desc">Personal learnings and experiences across three terms.</p><div class="tabs" role="tablist" aria-label="Academic term"><button role="tab" data-term="Prelim Term" aria-selected="true">Prelim Term</button><button role="tab" data-term="Midterm" aria-selected="false">Midterm</button><button role="tab" data-term="Final Term" aria-selected="false">Final Term</button></div><div class="card" role="tabpanel"><h3 id="term-title">Prelim Term</h3><p class="muted">Topics and personal reflection will be added here. This is a placeholder, not a submitted reflection.</p></div></div></section>
-<section class="section" id="contact"><div class="wrap"><span class="eyebrow">// contact</span><h2>Let's connect.</h2><p class="desc">Have a question or want to talk about a project? Send a message.</p><div class="contact"><div><h3>Contact Information</h3><p class="muted">Email address and social profiles can be added here.</p><a class="btn secondary" href="https://github.com/nalvax" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a></div><form id="contact-form" class="card"><label class="field"><span>Your Name</span><input name="name" required></label><label class="field"><span>Your Email</span><input name="email" type="email" required></label><label class="field"><span>Message</span><textarea name="message" required></textarea></label><p class="muted" id="form-status" role="status">Email recipient hasn't been configured yet.</p><button class="btn primary" type="submit">Send Message ↗</button></form></div></div></section>
+<section class="hero" id="welcome">
+<div class="wrap">
+<div class="hero-body">
+<span class="pill">
+<span class="dot">
+</span>Student at JRU</span>
+<p class="eyebrow">HELLO WORLD — WELCOME TO MY PORTFOLIO</p>
+<h1>Hi, I'm <em>Benjo.</em>
+</h1>
+<p class="lead">Computer Programming 1 · Jose Rizal University<br>Learning by building, one program at a time.</p>
+<p class="role mono" id="role">Aspiring Software Developer</p>
+<div class="actions">
+<a class="btn primary" href="#academics">View My Work ↗</a>
+<a class="btn secondary" href="#contact">Get In Touch ✉</a>
+</div>
+<a class="scroll mono" href="#about">↓ SCROLL TO EXPLORE</a>
+</div>
+</div>
+</section>
+<section class="section" id="about">
+<div class="wrap">
+<span class="eyebrow">// about</span>
+<h2>About Me</h2>
+<p class="desc">A little about my background, interests, skills, and goals.</p>
+<div class="about">
+<div class="portrait">
+<div>
+<span class="portrait-icon">🎓</span>
+<p>Add your portrait to <code>public/images/portrait.jpg</code>
+</p>
+</div>
+</div>
+<div>
+<div class="empty">Personal introduction coming soon. Add your own biography and interests.</div>
+<p>
+<b>School:</b> Jose Rizal University<br>
+<b>Program:</b> <span class="muted">To be added</span>
+<br>
+<b>Year level:</b> <span class="muted">To be added</span>
+</p>
+<h3>Skills & Tools</h3>
+<span class="chip">Java</span>
+<span class="chip">HTML & CSS</span>
+<span class="chip">VS Code</span>
+<span class="chip">Git</span>
+<h3>Goals</h3>
+<p class="muted">Career and learning goals coming soon.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="academics">
+<div class="wrap">
+<span class="eyebrow">// academics</span>
+<h2>Academics & Relevant Works</h2>
+<p class="desc">Artifacts, course outputs, and projects from Computer Programming 1.</p>
+<div class="grid">
+<article class="card">
+<span class="eyebrow">01 / PDF</span>
+<h3>Compiled PTs and Products</h3>
+<p>Performance tasks, machine problems, activities, and course outputs.</p>
+<a class="btn secondary" href="public/files/compiled-pts-and-products.pdf" target="_blank" rel="noopener noreferrer">View PDF ↗</a>
+</article>
+<article class="card">
+<span class="eyebrow">02 / PDF</span>
+<h3>Project Documentation</h3>
+<p>Project design and implementation documentation, if applicable.</p>
+<a class="btn secondary" href="public/files/project-documentation.pdf" target="_blank" rel="noopener noreferrer">View PDF ↗</a>
+</article>
+<article class="card">
+<span class="eyebrow">03 / VIDEO</span>
+<h3>Video Project Presentation</h3>
+<p>Recorded project walkthrough, if applicable.</p>
+<span class="chip">Coming soon</span>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="experience">
+<div class="wrap">
+<span class="eyebrow">// experience</span>
+<h2>Work Experience / Internships / Immersions</h2>
+<p class="desc">Professional experience, responsibilities, and lessons learned.</p>
+<div class="timeline">
+<div class="empty">Experience entries coming soon.</div>
+</div>
+</div>
+</section>
+<section class="section" id="seminars">
+<div class="wrap">
+<span class="eyebrow">// training</span>
+<h2>Seminars / Trainings Attended</h2>
+<p class="desc">Learning opportunities, events, and certifications.</p>
+<div class="empty">Seminars and training records coming soon.</div>
+</div>
+</section>
+<section class="section" id="organizations">
+<div class="wrap">
+<span class="eyebrow">// involvement</span>
+<h2>Organization & Community Involvement</h2>
+<p class="desc">In-campus and out-of-campus contributions.</p>
+<div class="empty">Organization entries coming soon.</div>
+</div>
+</section>
+<section class="section" id="awards">
+<div class="wrap">
+<span class="eyebrow">// recognition</span>
+<h2>Awards & Recognitions</h2>
+<p class="desc">Achievements, awards, and recognitions.</p>
+<div class="empty">Awards and recognitions coming soon.</div>
+</div>
+</section>
+<section class="section" id="other">
+<div class="wrap">
+<span class="eyebrow">// extra</span>
+<h2>Other Information</h2>
+<p class="desc">Additional information about activities and growth at JRU.</p>
+<div class="empty">Additional information coming soon.</div>
+</div>
+</section>
+<section class="section" id="reflections">
+<div class="wrap">
+<span class="eyebrow">// learning journal</span>
+<h2>Term Reflections</h2>
+<p class="desc">Personal learnings and experiences across three terms.</p>
+<div class="tabs" role="tablist" aria-label="Academic term">
+<button role="tab" data-term="Prelim Term" aria-selected="true">Prelim Term</button>
+<button role="tab" data-term="Midterm" aria-selected="false">Midterm</button>
+<button role="tab" data-term="Final Term" aria-selected="false">Final Term</button>
+</div>
+<div class="card" role="tabpanel">
+<h3 id="term-title">Prelim Term</h3>
+<p class="muted">Topics and personal reflection will be added here. This is a placeholder, not a submitted reflection.</p>
+</div>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="wrap">
+<span class="eyebrow">// contact</span>
+<h2>Let's connect.</h2>
+<p class="desc">Have a question or want to talk about a project? Send a message.</p>
+<div class="contact">
+<div>
+<h3>Contact Information</h3>
+<p class="muted">Email address and social profiles can be added here.</p>
+<a class="btn secondary" href="https://github.com/nalvax" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a>
+</div>
+<form id="contact-form" class="card">
+<label class="field">
+<span>Your Name</span>
+<input name="name" required>
+</label>
+<label class="field">
+<span>Your Email</span>
+<input name="email" type="email" required>
+</label>
+<label class="field">
+<span>Message</span>
+<textarea name="message" required>
+</textarea>
+</label>
+<p class="muted" id="form-status" role="status">Email recipient hasn't been configured yet.</p>
+<button class="btn primary" type="submit">Send Message ↗</button>
+</form>
+</div>
+</div>
+</section>
 </main>
-<footer class="footer"><div class="wrap"><span>Designed & built for a JRU Computer Programming 1 E-Portfolio · 2026</span><a href="#welcome">Back to top ↑</a></div></footer>
-<script>
-(function(){const html=document.documentElement,button=document.getElementById('theme');const saved=localStorage.getItem('benjo-theme');if(saved==='light'||(!saved&&matchMedia('(prefers-color-scheme: light)').matches))html.classList.add('light');button.textContent=html.classList.contains('light')?'☾':'☀';button.onclick=()=>{html.classList.toggle('light');localStorage.setItem('benjo-theme',html.classList.contains('light')?'light':'dark');button.textContent=html.classList.contains('light')?'☾':'☀'};const menu=document.getElementById('menu'),nav=document.getElementById('mobile-nav');menu.onclick=()=>{let open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))};nav.querySelectorAll('a').forEach(a=>a.onclick=()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')});document.querySelectorAll('[data-term]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-term]').forEach(n=>n.setAttribute('aria-selected',String(n===b)));document.getElementById('term-title').textContent=b.dataset.term});document.getElementById('contact-form').onsubmit=e=>{e.preventDefault();document.getElementById('form-status').textContent='Please add a real contact email before enabling message submissions.'};if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let words=['Aspiring Software Developer','Lifelong Learner','Building with Code'],i=0;setInterval(()=>{i=(i+1)%words.length;document.getElementById('role').textContent=words[i]},3500)}})();
+<footer class="footer">
+<div class="wrap">
+<span>Designed & built for a JRU Computer Programming 1 E-Portfolio · 2026</span>
+<a href="#welcome">Back to top ↑</a>
+</div>
+</footer>
+<script src="script.js" defer>
 </script>
-</body></html>
+</body>
+</html>
