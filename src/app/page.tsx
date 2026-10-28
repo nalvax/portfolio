@@ -41,6 +41,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("welcome");
   const [term, setTerm] = useState(0);
+  const [titleIndex, setTitleIndex] = useState(0);
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [formError, setFormError] = useState("");
@@ -51,6 +52,11 @@ export default function Home() {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); }), { rootMargin: "-25% 0px -60% 0px" });
     sections.forEach(([id]) => { const node = document.getElementById(id); if (node) observer.observe(node); });
     return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (typeof window === "undefined" || window.matchMedia("(prefers-reduced-motion: reduce)").matches || portfolio.person.rotatingTitles.length < 2) return;
+    const interval = window.setInterval(() => setTitleIndex(index => (index + 1) % portfolio.person.rotatingTitles.length), 3500);
+    return () => window.clearInterval(interval);
   }, []);
   const toggleTheme = () => { const next = theme === "dark" ? "light" : "dark"; setTheme(next); document.documentElement.dataset.theme = next; localStorage.setItem("portfolio-theme", next); };
   const email = portfolio.person.email;
@@ -83,7 +89,7 @@ export default function Home() {
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .12 }} className="mono muted" style={{ fontSize: 13 }}>HELLO WORLD — WELCOME TO MY PORTFOLIO</motion.p>
           <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .18, duration: .6 }} style={{ fontSize: "clamp(3.1rem, 9vw, 6.7rem)", letterSpacing: "-.075em", lineHeight: .98, margin: "18px 0 22px", fontWeight: 780 }}>Hi, I’m <span style={{ color: "var(--accent)" }}>{isTodo(person.firstName) ? "Your Name" : person.firstName}<span style={{ color: "var(--text)" }}>.</span></span></motion.h1>
           <p className="muted" style={{ fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.8, maxWidth: 680 }}>{person.program} · {person.school}<br/>{person.tagline}</p>
-          <p className="mono" style={{ color: "var(--accent)", fontSize: 13, marginTop: 24 }}>{person.rotatingTitles[0]}</p>
+          <p className="mono" style={{ color: "var(--accent)", fontSize: 13, marginTop: 24 }}>{person.rotatingTitles[titleIndex]}</p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 30 }}><a className="btn btn-primary" href="#academics">View My Work <ArrowRight size={16}/></a><a className="btn btn-secondary" href="#contact">Get In Touch <Mail size={16}/></a>{person.resumeFile && <a className="btn btn-secondary" href={withBasePath(person.resumeFile)} download>Download resume <ArrowDownToLine size={16}/></a>}</div>
           <a href="#about" className="mono muted" style={{ display: "inline-flex", alignItems: "center", gap: 9, marginTop: 66, fontSize: 11 }}><ArrowDown size={14}/> SCROLL TO EXPLORE</a>
         </div>
