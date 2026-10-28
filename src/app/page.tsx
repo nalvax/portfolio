@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowDownToLine, ArrowRight, Award, BookOpen, BriefcaseBusiness, Check, ChevronDown, Code2, ExternalLink, FileText, Github, GraduationCap, Mail, Menu, Moon, PlayCircle, Send, Sun, Users, X } from "lucide-react";
 import { portfolio } from "@/content/portfolio";
@@ -18,7 +18,7 @@ function SectionHeading({ eyebrow, title, description }: { eyebrow: string; titl
 function EmptyState({ label = "Nothing here just yet" }: { label?: string }) {
   return <div className="card" style={{ textAlign: "center", padding: "34px 20px" }}><div style={{ color: "var(--accent)", marginBottom: 12 }}><Code2 size={26} style={{ margin: "auto" }} /></div><strong>{label}</strong><p className="muted" style={{ fontSize: 14, marginBottom: 0 }}>Add your real details in <code>src/content/portfolio.ts</code> when you’re ready.</p></div>;
 }
-function Artifact({ title, description, file, icon, optional = false, embedUrl }: { title: string; description: string; file?: string | null; icon: React.ReactNode; optional?: boolean; embedUrl?: string | null }) {
+function Artifact({ title, description, file, icon, optional = false, embedUrl }: { title: string; description: string; file?: string | null; icon: ReactNode; optional?: boolean; embedUrl?: string | null }) {
   const [viewer, setViewer] = useState(false);
   const exists = Boolean((file && !file.includes("TODO")) || embedUrl);
   const isVideo = title.toLowerCase().includes("video");
@@ -99,4 +99,4 @@ export default function Home() {
     <footer style={{ borderTop: "1px solid var(--border)", padding: "28px 0" }}><div className="container" style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "space-between", alignItems: "center" }}><span className="mono muted" style={{ fontSize: 11 }}>Designed & built by {person.fullName} · {portfolio.site.year}</span><a href="#welcome" className="nav-link">Back to top ↑</a></div></footer>
   </main>;
 }
-const inputStyle: React.CSSProperties = { width: "100%", padding: "12px 13px", background: "var(--surface-2)", color: "var(--text)", border: "1px solid var(--border)", borderRadius: 10, outlineOffset: 3 };
+const inputStyle: CSSProperties = { width: "100%", padding: "12px 13px", background: "var(--surface-2)", color: "var(--text)", border: "1px solid var(--border)", borderRadius: 10, outlineOffset: 3 };
