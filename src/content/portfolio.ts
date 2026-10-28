@@ -2,7 +2,7 @@
 export const portfolio = {
   site: {
     title: " Benjo's | E-Portfolio",
-    description: "TODO: A Computer Programming 1 student e-portfolio at Jose Rizal University.",
+    description: " A Computer Programming 1 student e-portfolio at Jose Rizal University.",
     year: 2026,
   },
   person: {
@@ -10,10 +10,10 @@ export const portfolio = {
     firstName: "Benjo",
     initials: "B",
     school: "Jose Rizal University",
-    program: "TODO: Program (e.g. BS Information Technology)",
+    program: "BS Information Technology",
     yearLevel: " 1st Year level",
     tagline: "Learning by building, one program at a time.",
-    rotatingTitles: ["TODO: Aspiring Software Developer", "TODO: Lifelong Learner"],
+    rotatingTitles: ["Aspiring Health Informatics", "Lifelong Learner"],
     statusPill: "Student at JRU",
     location: "Mandaluyong City, Philippines",
     email: "benjo.terrado@my.jru.edu",
