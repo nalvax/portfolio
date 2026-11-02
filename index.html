@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script>try{const t=localStorage.getItem('portfolio-polish-theme')||'light';document.documentElement.dataset.theme=t;document.documentElement.classList.toggle('light',t==='light')}catch{document.documentElement.dataset.theme='light';document.documentElement.classList.add('light')}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Benjo's Computer Programming 1 E-Portfolio at Jose Rizal University.">
 <meta name="theme-color" content="#0b0f0c">
 <title>Benjo | JRU E-Portfolio</title>
 <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refresh.css?v=20261102">
 </head>
 <body>
 <a class="skip" href="#welcome">Skip to content</a>
@@ -30,7 +33,7 @@
 </nav>
 <div class="controls">
 <button id="theme" class="toggle" aria-label="Toggle theme">☀</button>
-<button id="menu" class="toggle menubtn" aria-expanded="false" aria-controls="mobile-nav">☰</button>
+<button id="menu" class="toggle menubtn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation">☰</button>
 </div>
 </div>
 <nav id="mobile-nav" class="mobile" aria-label="Mobile navigation">
@@ -64,6 +67,11 @@
 </div>
 <a class="scroll mono" href="#about">↓ SCROLL TO EXPLORE</a>
 </div>
+<div class="journal-art" aria-hidden="true"><div class="journal-window"><div class="journal-bar"><span>learning-journal.java</span><span>01 / 03</span></div><div class="journal-symbol">Hello, world.</div><pre><span>class</span> LearningJourney {
+  curiosity = <span>true</span>;
+  practice();
+  buildSomethingNew();
+}</pre><div class="journal-caption"><span>THINK. BUILD. REFLECT.</span><span>JRU / CP1</span></div></div><div class="journal-float">Small steps. Better programs.</div></div>
 </div>
 </section>
 <section class="section" id="about">
@@ -74,8 +82,8 @@
 <div class="about">
 <div class="portrait">
 <div>
-<span class="portrait-icon">🎓</span>
-<p>Add your portrait to <code>public/images/portrait.jpg</code>
+<span class="portrait-monogram" aria-hidden="true">B.</span>
+<p>Portrait coming soon
 </p>
 </div>
 </div>
@@ -187,7 +195,7 @@
 <div class="wrap">
 <span class="eyebrow">// contact</span>
 <h2>Let's connect.</h2>
-<p class="desc">Have a question or want to talk about a project? Send a message.</p>
+<p class="desc">Find my GitHub profile below. Email contact will be available once configured.</p>
 <div class="contact">
 <div>
 <h3>Contact Information</h3>
@@ -209,7 +217,7 @@
 </textarea>
 </label>
 <p class="muted" id="form-status" role="status">Email recipient hasn't been configured yet.</p>
-<button class="btn primary" type="submit">Send Message ↗</button>
+<button class="btn primary" type="submit">Check contact availability</button>
 </form>
 </div>
 </div>
@@ -223,5 +231,6 @@
 </footer>
 <script src="script.js" defer>
 </script>
+  <script src="refresh.js?v=20261102" defer></script>
 </body>
 </html>
