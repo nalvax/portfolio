@@ -1,7 +1,7 @@
 // Site interactions: theme, navigation, reflections, and hero titles.
 (function(){const html=document.documentElement,button=document.getElementById('theme');
 const saved=localStorage.getItem('benjo-theme');
-if(saved==='light'||(!saved&&matchMedia('(prefers-color-scheme: light)').matches))html.classList.add('light');
+if(saved!=='dark')html.classList.add('light');
 button.textContent=html.classList.contains('light')?'☾':'☀';
 button.onclick=()=>{html.classList.toggle('light');
 localStorage.setItem('benjo-theme',html.classList.contains('light')?'light':'dark');
