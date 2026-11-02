@@ -1,5 +1,11 @@
 // Site interactions: theme, navigation, reflections, and hero titles.
 (function(){const html=document.documentElement,button=document.getElementById('theme');
+const saved=localStorage.getItem('benjo-theme');
+if(saved==='light'||(!saved&&matchMedia('(prefers-color-scheme: light)').matches))html.classList.add('light');
+button.textContent=html.classList.contains('light')?'☾':'☀';
+button.onclick=()=>{html.classList.toggle('light');
+localStorage.setItem('benjo-theme',html.classList.contains('light')?'light':'dark');
+button.textContent=html.classList.contains('light')?'☾':'☀'};
 const menu=document.getElementById('menu'),nav=document.getElementById('mobile-nav');
 menu.onclick=()=>{let open=nav.classList.toggle('open');
 menu.setAttribute('aria-expanded',String(open))};
