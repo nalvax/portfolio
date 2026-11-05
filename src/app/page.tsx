@@ -71,9 +71,9 @@ export default function Home() {
   const submitContact = (e: FormEvent) => {
     e.preventDefault(); setFormError("");
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) { setFormError("Please complete all fields."); return; }
-    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(form.email)) { setFormError("Please enter a valid email address."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) { setFormError("Please enter a valid email address."); return; }
     if (emailIsPlaceholder) { setFormError("Update your email in src/content/portfolio.ts before using the contact form."); return; }
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent("Portfolio message from " + form.name)}&body=${encodeURIComponent(form.message + "\\n\\nReply to: " + form.email)}`;
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent("Portfolio message from " + form.name)}&body=${encodeURIComponent(form.message + "\n\nReply to: " + form.email)}`;
   };
   const person = portfolio.person;
   const isTodo = (value: string) => value.includes("TODO");
