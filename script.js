@@ -13,8 +13,18 @@ nav.querySelectorAll('a').forEach(a=>a.onclick=()=>{nav.classList.remove('open')
 menu.setAttribute('aria-expanded','false')});
 document.querySelectorAll('[data-term]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-term]').forEach(n=>n.setAttribute('aria-selected',String(n===b)));
 document.getElementById('term-title').textContent=b.dataset.term});
-document.getElementById('contact-form').onsubmit=e=>{e.preventDefault();
-document.getElementById('form-status').textContent='Please add a real contact email before enabling message submissions.'};
+document.getElementById('contact-form').onsubmit=e=>{
+  e.preventDefault();
+  const form=e.currentTarget;
+  if(!form.reportValidity())return;
+  const name=form.elements.namedItem('name').value.trim();
+  const from=form.elements.namedItem('email').value.trim();
+  const message=form.elements.namedItem('message').value.trim();
+  const subject=encodeURIComponent('Portfolio message from '+name);
+  const body=encodeURIComponent(message+'\\n\\nReply to: '+from);
+  document.getElementById('form-status').textContent='Opening your email app. Please send the prepared email there.';
+  window.location.href='mailto:BENJO.TERRADO@MY.JRU.EDU?subject='+subject+'&body='+body;
+};
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let words=['Aspiring Health Informatics Professional','Lifelong Learner'],i=0;
 setInterval(()=>{i=(i+1)%words.length;
 document.getElementById('role').textContent=words[i]},3500)}})();
