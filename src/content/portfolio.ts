@@ -16,7 +16,7 @@ export const portfolio = {
     rotatingTitles: ["Aspiring Health Informatics Professional", "Lifelong Learner"],
     statusPill: "Student at JRU",
     location: "Mandaluyong City, Philippines",
-    email: "benjo.terrado@my.jru.edu",
+    email: "BENJO.TERRADO@MY.JRU.EDU",
     socials: [
       { label: "GitHub", url: "TODO: https://github.com/your-username" },
       { label: "LinkedIn", url: "TODO: https://linkedin.com/in/your-profile" },
