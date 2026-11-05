@@ -2,18 +2,18 @@
 export const portfolio = {
   site: {
     title: "Benjo | E-Portfolio",
-    description: "Benjo’s Computer Programming 1 e-portfolio at Jose Rizal University.",
+    description: "Benjo's Computer Programming 1 E-Portfolio at Jose Rizal University.",
     year: 2026,
   },
   person: {
     fullName: "Benjo Terrado",
     firstName: "Benjo",
-    initials: "B",
+    initials: "BBT",
     school: "Jose Rizal University",
     program: "BS Information Technology",
-    yearLevel: " 1st Year level",
+    yearLevel: "1st Year",
     tagline: "Learning by building, one program at a time.",
-    rotatingTitles: ["Aspiring Health Informatics", "Lifelong Learner"],
+    rotatingTitles: ["Aspiring Health Informatics Professional", "Lifelong Learner"],
     statusPill: "Student at JRU",
     location: "Mandaluyong City, Philippines",
     email: "benjo.terrado@my.jru.edu",
@@ -25,12 +25,12 @@ export const portfolio = {
     portrait: "/images/portrait.jpg",
   },
   about: {
-    paragraphs: ["TODO: Write a short introduction about yourself, your interests, and what brought you to programming."],
+    paragraphs: ["I am building my foundations in programming and digital problem-solving through coursework at Jose Rizal University. This space brings together my activities, work in progress, and reflections as I continue learning."],
     skills: [
-      { group: "Languages", items: ["TODO: Java", "TODO: HTML/CSS"] },
-      { group: "Tools", items: ["TODO: VS Code", "TODO: Git"] },
+      { group: "Languages", items: ["Java", "HTML & CSS"] },
+      { group: "Tools", items: ["VS Code", "Git"] },
     ],
-    goals: "TODO: Describe your learning and career goals.",
+    goals: "To become more confident in writing code, understanding systems, and delivering well-documented projects.",
   },
   academics: {
     compiledWorks: { title: "Compiled PTs and Products", file: "/files/compiled-pts-and-products.pdf", description: "A collection of performance tasks, machine problems, activities, seatwork, and other course outputs." },
