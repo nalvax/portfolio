@@ -15,6 +15,6 @@ document.querySelectorAll('[data-term]').forEach(b=>b.onclick=()=>{document.quer
 document.getElementById('term-title').textContent=b.dataset.term});
 document.getElementById('contact-form').onsubmit=e=>{e.preventDefault();
 document.getElementById('form-status').textContent='Please add a real contact email before enabling message submissions.'};
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let words=['Aspiring Software Developer','Lifelong Learner','Building with Code'],i=0;
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let words=['Aspiring Health Informatics Professional','Lifelong Learner'],i=0;
 setInterval(()=>{i=(i+1)%words.length;
 document.getElementById('role').textContent=words[i]},3500)}})();
