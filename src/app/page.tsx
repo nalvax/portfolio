@@ -71,9 +71,9 @@ export default function Home() {
   const submitContact = (e: FormEvent) => {
     e.preventDefault(); setFormError("");
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) { setFormError("Please complete all fields."); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) { setFormError("Please enter a valid email address."); return; }
+    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(form.email)) { setFormError("Please enter a valid email address."); return; }
     if (emailIsPlaceholder) { setFormError("Update your email in src/content/portfolio.ts before using the contact form."); return; }
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent("Portfolio message from " + form.name)}&body=${encodeURIComponent(form.message + "\n\nReply to: " + form.email)}`;
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent("Portfolio message from " + form.name)}&body=${encodeURIComponent(form.message + "\\n\\nReply to: " + form.email)}`;
   };
   const person = portfolio.person;
   const isTodo = (value: string) => value.includes("TODO");
@@ -92,7 +92,7 @@ export default function Home() {
         <div aria-hidden="true" style={{ position: "absolute", width: 520, height: 520, right: "-10%", top: "10%", borderRadius: "50%", background: "radial-gradient(circle, color-mix(in srgb, var(--accent) 12%, transparent), transparent 68%)", pointerEvents: "none" }}/>
         <div style={{ maxWidth: 800, position: "relative" }}>
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5 }} className="chip" style={{ gap: 8, alignItems: "center", marginBottom: 26 }}><span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)" }}/>{person.statusPill}</motion.div>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .12 }} className="mono muted" style={{ fontSize: 13 }}>HELLO WORLD — WELCOME TO MY PORTFOLIO</motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .12 }} className="mono muted" style={{ fontSize: 13 }}>WELCOME TO MY PORTFOLIO</motion.p>
           <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .18, duration: .6 }} style={{ fontSize: "clamp(3.1rem, 9vw, 6.7rem)", letterSpacing: "-.075em", lineHeight: .98, margin: "18px 0 22px", fontWeight: 780 }}>Hi, I’m <span style={{ color: "var(--accent)" }}>{isTodo(person.firstName) ? "Your Name" : person.firstName}<span style={{ color: "var(--text)" }}>.</span></span></motion.h1>
           <p className="muted" style={{ fontSize: "clamp(16px, 2vw, 20px)", lineHeight: 1.8, maxWidth: 680 }}>{person.program} · {person.school}<br/>{person.tagline}</p>
           <p className="mono" style={{ color: "var(--accent)", fontSize: 13, marginTop: 24 }}>{person.rotatingTitles[titleIndex]}</p>
