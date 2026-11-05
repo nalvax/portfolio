@@ -30,3 +30,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .nav-link:hover, .nav-link.active { color: var(--accent); }
 @media (max-width: 700px) { .container { width: min(100% - 32px, 1120px); } .section { padding: 76px 0; } .desktop-nav { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* Responsive navigation for the full course-section list. */
+.mobile-menu { display: none; }
+.desktop-nav { scrollbar-width: none; }
+.desktop-nav::-webkit-scrollbar { display: none; }
+section[id] { scroll-margin-top: 88px; }
+button:disabled { opacity: .55; cursor: not-allowed; transform: none !important; }
+input, textarea { font: inherit; }
+@media (max-width: 1200px) {
+  .desktop-nav { display: none !important; }
+  .mobile-menu { display: inline-flex !important; }
+}
+@media (min-width: 1201px) {
+  .mobile-menu { display: none !important; }
+}
+@media (max-width: 480px) {
+  .container { width: calc(100% - 28px); }
+  .btn { min-height: 44px; }
+}
