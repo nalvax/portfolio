@@ -1,8 +1,8 @@
 // Edit this file to personalize every section. Do not publish personal details you do not want public.
 export const portfolio = {
   site: {
-    title: " Benjo's | E-Portfolio",
-    description: " A Computer Programming 1 student e-portfolio at Jose Rizal University.",
+    title: "Benjo | E-Portfolio",
+    description: "Benjo’s Computer Programming 1 e-portfolio at Jose Rizal University.",
     year: 2026,
   },
   person: {
