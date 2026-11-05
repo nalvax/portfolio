@@ -1,34 +1,35 @@
-# Editing Benjo's E-Portfolio
+# Edit Benjo's Portfolio — One Published Website
 
-The published GitHub Pages website uses **three files in the repository root**:
+**Live URL:** https://nalvax.github.io/portfolio/
 
-| File | Edit this for |
+## Which files control the live website?
+
+| File | What you can edit |
 | --- | --- |
-| `index.html` | Name, headings, section descriptions, links, course information, cards and contact text |
-| `styles.css` | Colors, spacing, typography, mobile design and dark/light themes |
-| `script.js` | Theme toggle, mobile menu, reflections tabs and rotating hero subtitle |
+| [index.html](index.html) | Personal information, headings, text, content and links |
+| [styles.css](styles.css) | Base colors, spacing, desktop/mobile styles |
+| [portfolio-refresh.css](portfolio-refresh.css) | Current design overrides and styling |
+| [script.js](script.js) | Rotating titles, dark/light theme, mobile menu, reflections |
+| [public/files/](public/files/) | Academic PDFs |
 
-## How to edit from GitHub
+### How to edit using GitHub
 
-1. Open [this repository](https://github.com/nalvax/portfolio).
-2. Click `index.html`, `styles.css`, or `script.js`.
-3. Click the pencil icon (**Edit this file**).
-4. Use the browser's Find command (Ctrl+F or Command+F) to locate a heading such as `Hi, I'm`, `About Me`, or `--accent`.
-5. Modify the content. Select **Commit changes** to save to `main`.
-6. Reload the [GitHub Pages website](https://nalvax.github.io/portfolio/) after Pages has published the new commit.
+1. Select one of the files above, then click the pencil icon.
+2. Use Ctrl+F / Command+F to find the text you want to edit.
+3. Edit only what you need and click **Commit changes** to save to `main`.
+4. Visit the live URL and refresh after GitHub Pages finishes deploying.
 
-## Common edits
+### Publishing synchronization
 
-- **Name:** Find `Benjo` in `index.html`.
-- **School/program:** Find `Computer Programming 1` and `Jose Rizal University`.
-- **Accent color:** Find `--accent` in `styles.css` (the light theme has its own value).
-- **Skills:** Edit the chips under `Skills & Tools` in `index.html`.
-- **PDF files:** Replace documents under `public/files/`. The links in this root-published homepage currently use `public/files/...`.
-- **Reflections:** Find `Term Reflections`; replace the placeholder narrative with real content.
-- **Contact:** The form is intentionally disabled until a real destination email is configured. Do not publish an email address you do not want public.
+The repository has two website codebases: a standalone HTML site in the root and an older Next.js application in `src/`.
 
-## Important
+**The standalone root homepage is the canonical published version.** Both supported GitHub Pages publishing sources serve the same standalone homepage:
 
-This repository also contains a separate **Next.js** source project in `src/`. The root `index.html`, `styles.css`, and `script.js` are a simpler standalone GitHub Pages version. If Pages publishes from `main / (root)`, edit these three root files. If Pages publishes via the Next.js **GitHub Actions** workflow, edits to these root files will not change that Next.js build; edit `src/content/portfolio.ts` and the Next.js components instead.
+- **Deploy from a branch:** `main` → `/(root)` serves `index.html`.
+- **GitHub Actions:** `.github/workflows/deploy.yml` copies root `index.html`, `styles.css`, `script.js`, `portfolio-refresh.css`, and `public/` into its Pages artifact.
 
-Do not delete the root `index.html`; it is the entry page for branch-based GitHub Pages publishing.
+Therefore, do not edit the Next.js `src/app/page.tsx` when trying to update the live website. Its content file `src/content/portfolio.ts` is retained and has been aligned with the current homepage for legacy/development use, but the source files are **not an automatic two-way editor**. For immediate live edits, use the root HTML/CSS/JS files.
+
+If you need to change the rotating hero text, edit the list of titles in `script.js` **and** the initial title in `index.html` to match.
+
+If the site shows old content: check [GitHub Actions](https://github.com/nalvax/portfolio/actions), [Pages settings](https://github.com/nalvax/portfolio/settings/pages), then do a hard refresh (Command+Shift+R / Ctrl+Shift+R).
