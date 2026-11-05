@@ -27,8 +27,7 @@ export const portfolio = {
   about: {
     paragraphs: ["I am building my foundations in programming and digital problem-solving through coursework at Jose Rizal University. This space brings together my activities, work in progress, and reflections as I continue learning."],
     skills: [
-      { group: "Languages", items: ["Java", "HTML & CSS"] },
-      { group: "Tools", items: ["VS Code", "Git"] },
+      { group: "Languages", items: ["Java"] },
     ],
     goals: "To become more confident in writing code, understanding systems, and delivering well-documented projects.",
   },
