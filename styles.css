@@ -972,3 +972,53 @@ html.light .contact-form {background:var(--surface);}
 @media(max-width:380px){
   .brand-wordmark { font-size:19px; gap:.18em; }
 }
+
+/* Reflection color harmonization — charcoal, ivory, and forest-sage.
+   Shelf covers, in-flight clones, and opened book share these CSS variables. */
+.reflection-showcase {
+  --book-stage:#111b17;
+  --book-paper:#f3f1e9;
+  border-color:#46574b;
+}
+.reflection-shelf {
+  background:radial-gradient(ellipse 72% 76% at 50% 48%,#293e32 0%,#1a2921 49%,#111b17 100%);
+}
+.reflection-shelf__word {
+  color:rgba(228,238,226,.065);
+}
+.reflection-shelf__bottom {
+  background:rgba(9,19,14,.52);
+}
+.reflection-book--prelim {
+  --cover:#f3f1e9;
+  --cover-ink:#21382b;
+  --cover-accent:#46694f;
+}
+.reflection-book--midterm {
+  --cover:#cbdacd;
+  --cover-ink:#203b2e;
+  --cover-accent:#395c46;
+}
+.reflection-book--final {
+  --cover:#314f3f;
+  --cover-ink:#f2f3ed;
+  --cover-accent:#cfdfc8;
+}
+.reflection-book__front {
+  background:linear-gradient(100deg,rgba(0,0,0,.12),transparent 5%,rgba(255,255,255,.10) 17%,transparent 45%),var(--cover);
+}
+.reflection-book__spine {
+  background:linear-gradient(90deg,
+    color-mix(in srgb,var(--cover) 76%,#102018),
+    var(--cover) 48%,
+    color-mix(in srgb,var(--cover) 84%,var(--cover-ink)));
+}
+.reflection-reader {
+  background:radial-gradient(ellipse 73% 97% at 29% 46%,#2b4334 0%,#1c3024 44%,#111d17 100%);
+}
+.reflection-reader__top {
+  border-bottom-color:#455d4b;
+}
+.reflection-reader__footer {
+  border-top-color:#466350;
+}

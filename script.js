@@ -76,9 +76,9 @@ function initReflectionBooks() {
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const timing = () => motion.matches ? { flight: 0, open: 0, close: 0, change: 0, fade: 0 } : { flight: 740, open: 940, close: 840, change: 240, fade: 130 };
   const volumes = [
-    { id:'prelim', term:'Prelim Term', label:'01 / PRELIM TERM', n:'01', cover:'FIRST<br>PRINCIPLES.', shade:'#f2efe8', ink:'#253a43', index:['Algorithms & Flowcharts','Java Fundamentals','Learning the Basics'] },
-    { id:'midterm', term:'Midterm', label:'02 / MIDTERM', n:'02', cover:'THINK.<br>TRACE.<br>REPEAT.', shade:'#e0e7e4', ink:'#274e5e', index:['Input / Process / Output','Problem Decomposition','Tracing & Debugging'] },
-    { id:'final', term:'Final Term', label:'03 / FINAL TERM', n:'03', cover:'ALWAYS<br>IN<br>PROGRESS.', shade:'#e5e9e4', ink:'#354b3f', index:['Apply & Test','Review & Improve','Looking Forward'] }
+    { id:'prelim', term:'Prelim Term', label:'01 / PRELIM TERM', n:'01', cover:'FIRST<br>PRINCIPLES.', shade:'#f3f1e9', ink:'#21382b', index:['Algorithms & Flowcharts','Java Fundamentals','Learning the Basics'] },
+    { id:'midterm', term:'Midterm', label:'02 / MIDTERM', n:'02', cover:'THINK.<br>TRACE.<br>REPEAT.', shade:'#cbdacd', ink:'#203b2e', index:['Input / Process / Output','Problem Decomposition','Tracing & Debugging'] },
+    { id:'final', term:'Final Term', label:'03 / FINAL TERM', n:'03', cover:'ALWAYS<br>IN<br>PROGRESS.', shade:'#314f3f', ink:'#f2f3ed', index:['Apply & Test','Review & Improve','Looking Forward'] }
   ];
   let active = -1;
   let phase = 'idle';
