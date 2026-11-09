@@ -337,20 +337,6 @@ initReflectionBooks();
 
 
 
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    const name = form.elements.namedItem('name').value.trim();
-    const email = form.elements.namedItem('email').value.trim();
-    const message = form.elements.namedItem('message').value.trim();
-    if (!name || !email || !message) return;
-    const subject = encodeURIComponent('Portfolio enquiry from ' + name);
-    const body = encodeURIComponent(message + '\n\nFrom: ' + name + '\nReply to: ' + email);
-    document.getElementById('form-status').textContent = 'Opening your email app — please send the prepared email from there.';
-    window.location.href = 'mailto:BENJO.TERRADO@MY.JRU.EDU?subject=' + subject + '&body=' + body;
-  });
-
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const revealItems = Array.from(document.querySelectorAll('[data-reveal]'));
     const revealObserver = new IntersectionObserver((entries, observer) => {

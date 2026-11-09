@@ -174,15 +174,6 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 .email-link:hover { color: var(--ink); }
 .contact-copy > p { max-width: 370px; margin: 24px 0 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
 .contact-fine { margin-top: auto; padding-top: 30px; color: var(--low); }
-.contact-form { padding: clamp(26px, 3vw, 43px); border: 1px solid var(--line); background: var(--surface); }
-.form-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 30px; color: var(--accent); font-size: 10px; }
-.contact-form label { display: block; margin-bottom: 8px; color: var(--ink); font-size: 13px; font-weight: 600; }
-.contact-form input, .contact-form textarea { display: block; width: 100%; margin: 0 0 19px; padding: 11px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: none; background: transparent; color: var(--ink); font-size: 14px; resize: vertical; }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--low); }
-.contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
-.contact-form textarea { min-height: 80px; }
-.form-submit { width: 100%; cursor: pointer; }
-.form-status { margin: 11px 0 0; color: var(--low); font-size: 11px; }
 .footer { border-top: 1px solid var(--line); padding: 32px 0; }
 .footer-content { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .footer-mark { font-size: 29px; font-weight: 700; letter-spacing: -.12em; }
@@ -800,3 +791,9 @@ body.benjo-archive-open{overflow:hidden}
 @media(max-width:700px){.benjo-image-viewer{width:100vw;max-height:100dvh;border-radius:0}.benjo-image-panel{height:100dvh;max-height:100dvh}.benjo-image-stage{padding:10px 47px}.benjo-image-original{max-height:75dvh}.benjo-image-prev,.benjo-image-next{width:36px;height:41px;font-size:25px}.benjo-image-prev{left:4px}.benjo-image-next{right:4px}.benjo-image-top>span{font-size:9px}.benjo-pdf-viewer{width:100vw;height:100dvh;border-radius:0}.benjo-pdf-header{padding:31px 19px 19px}.benjo-pdf-name{font-size:clamp(23px,6vw,35px)}.benjo-pdf-document{margin:0 11px}.benjo-pdf-footer{padding:13px 17px 20px;gap:10px 17px}.benjo-pdf-footer>span{flex-basis:100%;margin-left:0}}
 @media(hover:none),(pointer:coarse){.certificates-section .credential-preview[data-view-pdf]::after{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.benjo-image-close,.benjo-image-prev,.benjo-image-next,.certificates-section .credential-preview[data-view-pdf]::after{transition:none}}
+
+/* Contact is now email-only: align the link with the section heading and remove form whitespace. */
+.contact-layout {display:grid;grid-template-columns:minmax(190px,.25fr) minmax(0,1fr);gap:40px;}
+.contact-layout .contact-copy {grid-column:2;min-height:0;max-width:640px;padding:0;}
+.contact-layout .contact-fine {margin-top:27px;padding-top:0;}
+@media(max-width:740px){.contact-layout{grid-template-columns:minmax(0,1fr);gap:0}.contact-layout .contact-copy{grid-column:1;}}
