@@ -162,22 +162,28 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 .reflection-panel h3 { margin: 13px 0 20px; font-size: clamp(34px, 4vw, 60px); font-weight: 500; letter-spacing: -.06em; }
 .reflection-panel p { max-width: 600px; color: var(--muted); font-size: 16px; line-height: 1.9; }
 .reflection-status { display: block; margin-top: 26px; color: var(--accent); font-size: 10px; }
-.contact-layout { display: grid; grid-template-columns: 1fr .92fr; gap: clamp(45px, 8vw, 125px); }
-.contact-label { color: var(--accent); }
-.email-link { display: inline-block; margin: 35px 0 15px; max-width: 100%; overflow-wrap: anywhere; font-size: clamp(24px, 2.85vw, 45px); font-weight: 500; letter-spacing: -.065em; line-height: 1.45; border-bottom: 1px solid var(--line); }
-.email-link:hover { color: var(--accent); }
-.email-link span { font-size: .7em; color: var(--accent); }
-.contact-copy > p { color: var(--muted); max-width: 360px; font-size: 14px; line-height: 1.9; }
-.contact-fine { margin-top: 75px; color: var(--low); }
-.contact-form { padding: clamp(24px, 3.3vw, 48px); border: 1px solid var(--line); background: var(--surface); }
-.form-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 36px; color: var(--accent); font-size: 10px; }
-.contact-form label { display: block; margin-bottom: 9px; color: var(--ink); font-size: 12px; font-weight: 600; }
-.contact-form input, .contact-form textarea { display: block; width: 100%; margin: 0 0 24px; padding: 13px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: none; background: transparent; color: var(--ink); font-size: 15px; resize: vertical; }
+.contact-section { padding-top: clamp(80px, 8vw, 118px); padding-bottom: clamp(84px, 8vw, 130px); }
+.contact-section .section-heading { margin-bottom: 52px; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .92fr); gap: clamp(50px, 6vw, 100px); align-items: start; }
+.contact-copy { min-width: 0; min-height: 485px; display: flex; flex-direction: column; align-items: flex-start; padding: 17px 0 0; }
+.contact-label { display: block; margin-bottom: 27px; color: var(--accent); }
+.email-link { display: flex; flex-direction: column; max-width: 100%; padding: 0 0 20px; border-bottom: 1px solid var(--line); font-size: clamp(28px, 2.75vw, 42px); font-weight: 500; line-height: 1.22; letter-spacing: -.06em; overflow-wrap: anywhere; }
+.email-link > span { display: block; }
+.email-link .email-domain { color: var(--accent); }
+.email-link .email-arrow { display: inline-block; margin-left: .2em; font-size: .7em; color: var(--accent); transition: transform .2s; }
+.email-link:hover .email-arrow { transform: translate(3px, -3px); }
+.email-link:hover { color: var(--ink); }
+.contact-copy > p { max-width: 370px; margin: 24px 0 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+.contact-fine { margin-top: auto; padding-top: 30px; color: var(--low); }
+.contact-form { padding: clamp(26px, 3vw, 43px); border: 1px solid var(--line); background: var(--surface); }
+.form-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 30px; color: var(--accent); font-size: 10px; }
+.contact-form label { display: block; margin-bottom: 8px; color: var(--ink); font-size: 13px; font-weight: 600; }
+.contact-form input, .contact-form textarea { display: block; width: 100%; margin: 0 0 19px; padding: 11px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; outline: none; background: transparent; color: var(--ink); font-size: 14px; resize: vertical; }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--low); }
 .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
-.contact-form textarea { min-height: 106px; }
+.contact-form textarea { min-height: 80px; }
 .form-submit { width: 100%; cursor: pointer; }
-.form-status { color: var(--low); font-size: 11px; margin: 14px 0 0; }
+.form-status { margin: 11px 0 0; color: var(--low); font-size: 11px; }
 .footer { border-top: 1px solid var(--line); padding: 32px 0; }
 .footer-content { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .footer-mark { font-size: 29px; font-weight: 700; letter-spacing: -.12em; }
@@ -234,7 +240,11 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
   .reflection-layout { gap: 35px; }
   .reflection-aside { min-height: 0; }
   .reflection-symbol { display: none; }
-  .contact-fine { margin-top: 35px; }
+  .contact-layout { gap: 36px; }
+  .contact-copy { min-height: 0; padding: 0; }
+  .contact-fine { margin-top: 25px; padding-top: 0; }
+  .email-link { font-size: clamp(28px, 6.4vw, 39px); }
+  .contact-form { padding: 25px; }
   .work-item { grid-template-columns: 52px 1fr; gap: 12px 18px; padding: 27px 0; }
   .work-item:hover { padding-left: 0; }
   .work-status { grid-column: 2; justify-self: start; }
@@ -256,7 +266,7 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
   .identity-bottom { font-size: 11px; }
   .tabs { gap: 16px; }
   .tabs button { font-size: 11px; }
-  .email-link { font-size: 6.6vw; }
+  .email-link { font-size: clamp(26px, 6.4vw, 33px); }
   .footer-content { flex-wrap: wrap; }
   .footer-content p { order: 3; width: 100%; }
   .footer-content p span { display: block; margin: 4px 0 0; }
