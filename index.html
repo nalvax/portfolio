@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261109-4">
-  <script src="script.js?v=20261109-2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261109-reflections">
+  <script src="script.js?v=20261109-reflections" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -150,29 +150,86 @@
     </section>
 
     <section id="reflections" class="section reflection-section" aria-labelledby="reflection-title">
-      <div class="container">
-        <div class="section-heading" data-reveal>
-          <span class="section-index mono">04 / REFLECTIONS</span>
-          <div><h2 id="reflection-title">Notes to <em>my future self.</em></h2><p class="section-intro">Three academic terms, documented in my own words.</p></div>
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <span class="section-index mono">04 / REFLECTIONS</span>
+      <div><h2 id="reflection-title">A chapter of <em>becoming.</em></h2><p class="section-intro">Three terms. Three volumes. The lessons behind each line of code.</p></div>
+    </div>
+    <div class="reflection-showcase" id="reflection-showcase" data-reveal>
+      <div class="reflection-showcase__top mono"><span>BENJO TERRADO / LEARNING JOURNAL</span><span>VOL. 01—03 / 2026</span></div>
+      <div class="reflection-shelf" id="reflection-shelf">
+        <div class="reflection-shelf__word" aria-hidden="true">REFLECTIONS</div>
+        <div class="reflection-books" role="group" aria-label="Choose a term to read">
+          <button class="reflection-book reflection-book--prelim" type="button" data-book="prelim" aria-label="Open Prelim Term Reflection">
+            <span class="reflection-book__object" aria-hidden="true">
+              <span class="reflection-book__pages"></span><span class="reflection-book__spine">TERM ONE / BENJO TERRADO</span>
+              <span class="reflection-book__front">
+                <span class="reflection-book__edition">JRU / COMPUTER PROGRAMMING 1</span>
+                <span class="reflection-book__title">FIRST<br>PRINCIPLES<span>.</span></span>
+                <span class="reflection-book__art reflection-book__art--one"><i></i><i></i><i></i><i></i><i></i></span>
+                <span class="reflection-book__bottom"><span>THE PRELIM TERM</span><span>01 / 03</span></span>
+              </span>
+              <span class="reflection-book__hint">OPEN ↗</span>
+            </span>
+            <span class="reflection-book__meta"><span>01 / PRELIM</span><span>READ ↗</span></span>
+          </button>
+          <button class="reflection-book reflection-book--midterm" type="button" data-book="midterm" aria-label="Open Midterm Reflection">
+            <span class="reflection-book__object" aria-hidden="true">
+              <span class="reflection-book__pages"></span><span class="reflection-book__spine">TERM TWO / BENJO TERRADO</span>
+              <span class="reflection-book__front">
+                <span class="reflection-book__edition">JRU / COMPUTER PROGRAMMING 1</span>
+                <span class="reflection-book__title">THINK.<br>TRACE.<br>REPEAT<span>.</span></span>
+                <span class="reflection-book__art reflection-book__art--two"><i></i><i></i><i></i><i></i></span>
+                <span class="reflection-book__bottom"><span>THE MIDTERM</span><span>02 / 03</span></span>
+              </span>
+              <span class="reflection-book__hint">OPEN ↗</span>
+            </span>
+            <span class="reflection-book__meta"><span>02 / MIDTERM</span><span>READ ↗</span></span>
+          </button>
+          <button class="reflection-book reflection-book--final" type="button" data-book="final" aria-label="Open Final Term Reflection">
+            <span class="reflection-book__object" aria-hidden="true">
+              <span class="reflection-book__pages"></span><span class="reflection-book__spine">TERM THREE / BENJO TERRADO</span>
+              <span class="reflection-book__front">
+                <span class="reflection-book__edition">JRU / COMPUTER PROGRAMMING 1</span>
+                <span class="reflection-book__title">ALWAYS<br>IN<br>PROGRESS<span>.</span></span>
+                <span class="reflection-book__art reflection-book__art--three"><i></i><i></i><i></i><i></i></span>
+                <span class="reflection-book__bottom"><span>THE FINAL TERM</span><span>03 / 03</span></span>
+              </span>
+              <span class="reflection-book__hint">OPEN ↗</span>
+            </span>
+            <span class="reflection-book__meta"><span>03 / FINAL</span><span>READ ↗</span></span>
+          </button>
         </div>
-        <div class="reflection-layout" data-reveal>
-          <div class="reflection-aside"><span class="mono">THE LEARNING JOURNAL</span><p>Progress is more than the finished output. It's also the questions, mistakes, and perspective gained.</p><div class="reflection-symbol" aria-hidden="true">“</div></div>
-          <div class="reflection-content">
-            <div class="tabs" role="tablist" aria-label="Academic term reflections">
-              <button id="tab-prelim" role="tab" type="button" data-term="Prelim Term" aria-selected="true" aria-controls="reflection-panel" tabindex="0">01 / Prelim</button>
-              <button id="tab-midterm" role="tab" type="button" data-term="Midterm" aria-selected="false" aria-controls="reflection-panel" tabindex="-1">02 / Midterm</button>
-              <button id="tab-final" role="tab" type="button" data-term="Final Term" aria-selected="false" aria-controls="reflection-panel" tabindex="-1">03 / Final</button>
+        <div class="reflection-shelf__bottom mono"><span>SELECT A VOLUME TO OPEN ITS REFLECTION</span><span>THREE NOTES ON LEARNING TO PROGRAM ↗</span></div>
+      </div>
+      <div class="reflection-reader" id="reflection-reader" hidden role="region" aria-label="Selected reflection">
+        <div class="reflection-reader__top mono"><span id="reader-edition">VOL. 01 / AN ACADEMIC JOURNAL</span><button type="button" class="reflection-reader__close" id="reader-close" aria-label="Close reflection and return to volumes">CLOSE <span aria-hidden="true">×</span></button></div>
+        <div class="reflection-reader__layout">
+          <div class="reflection-reader__scene" aria-hidden="true">
+            <div class="reflection-openbook" id="reflection-openbook">
+              <div class="reflection-openbook__back"></div>
+              <div class="reflection-openbook__sheet reflection-openbook__sheet--two"></div>
+              <div class="reflection-openbook__sheet reflection-openbook__sheet--one"></div>
+              <div class="reflection-openbook__inside"><span class="reflection-openbook__inside-kicker">THE LEARNING JOURNAL</span><strong>NOTES<br>FROM THE<br>PROCESS<span>.</span></strong><small>BENJO TERRADO / 2026</small></div>
+              <div class="reflection-openbook__cover"><div class="reflection-openbook__coverface"><small id="reader-cover-eyebrow">TERM ONE / 2026</small><strong id="reader-cover-text">FIRST<br>PRINCIPLES.</strong><span>BENJO TERRADO / JRU</span></div><div class="reflection-openbook__coverback"><span>THE PROCESS<br>IS THE POINT.</span><small>REFLECTIONS / 2026</small></div></div>
             </div>
-            <div class="reflection-panel" id="reflection-panel" role="tabpanel" aria-labelledby="tab-prelim" tabindex="0">
-              <span class="mono reflection-label">ACADEMIC JOURNAL / 2026</span>
-              <h3 id="term-title">Prelim Term</h3>
-              <p id="term-body">My personal reflection for this term has not been uploaded yet. This space is reserved for the lessons and experiences I want to remember.</p>
-              <span class="reflection-status mono">ENTRY AWAITING CONTENT ↗</span>
-            </div>
+            <span class="reflection-reader__figure mono">A STUDY IN PROGRESS / NO. <span id="reader-figure">01</span></span>
+          </div>
+          <div class="reflection-reader__copy">
+            <span class="reflection-reader__kicker mono" id="reader-kicker">01 / PRELIM TERM</span>
+            <h3 id="reader-title">Prelim Term <em>Reflection</em></h3>
+            <div class="reflection-reader__body" id="reader-body" tabindex="0" aria-label="Full reflection text"></div>
+            <span class="reflection-reader__scrollhint mono">SCROLL TO CONTINUE READING ↓</span><div class="reflection-reader__footer"><span id="reader-count" class="mono">01 / 03</span><div><button id="reader-previous" type="button" aria-label="Previous reflection">← PREVIOUS</button><button id="reader-next" type="button" aria-label="Next reflection">NEXT →</button></div></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+    <noscript><p class="reflection-nojs">JavaScript is needed for the animated book reader. The full reflections can be viewed by enabling JavaScript.</p></noscript>
+    <template id="reflection-prelim"><p>During the preliminary term in Computer Programming 1, I began learning the basic concepts of programming and how to approach problems step by step. I learned that before writing a program, I first need to understand the problem, identify the required input, and determine the expected output. Studying algorithms and flowcharts helped me organize my ideas and understand the sequence of instructions needed to solve a problem.</p><p>As I started working with Java, I became more familiar with the structure of a simple program, variables, data types, and input and output. At first, I found it challenging to remember the correct syntax and understand where each part of the code belonged. Small mistakes, such as missing punctuation or using an incorrect variable name, reminded me to check my work carefully. Breaking down examples line by line helped me understand the purpose of each instruction instead of simply copying the code.</p><p>This term helped me build my confidence as a beginner. I realized that learning programming requires patience, practice, and a willingness to correct mistakes. Although I still needed guidance with some exercises, I became more comfortable approaching problems in an organized way. My goal after the preliminary term was to strengthen my understanding of the basics so I could apply them more independently in the next lessons.</p></template>
+    <template id="reflection-midterm"><p>During the midterm, I focused on applying the basic programming concepts I had learned to more challenging exercises. I began paying closer attention to how different parts of a program work together, especially when accepting input, processing information, and displaying results. Instead of looking only at whether my code could run, I started checking whether it produced the correct output.</p><p>One challenge I experienced was translating a problem statement into working Java code. Sometimes, I understood what a question was asking but was unsure how to begin the solution. Writing the steps first and identifying the necessary variables helped me organize my approach. I also practiced tracing my code, or following its instructions one at a time, to understand why an output was correct or incorrect.</p><p>The midterm taught me to become more patient when solving programming problems. When my first attempt did not work, I learned to review the instructions and examine my solution rather than immediately start over. I also realized that understanding an example is different from being able to create a similar program on my own. Because of this, I tried to focus more on the reasoning behind each solution. This experience helped me become more careful and more responsible for understanding my own work.</p></template>
+    <template id="reflection-final"><p>During the final term, I focused on bringing together the programming skills I had practiced in earlier lessons and applying them to the remaining activities. I became more conscious of the complete process of solving a programming problem: understanding the instructions, planning a solution, writing the code, testing the output, and correcting errors. Following this process helped me approach my work with a clearer plan.</p><p>One important lesson during this term was the value of reviewing and improving my own programs. A program that runs does not always mean that every part of the solution is correct. I learned to compare the results with the requirements and check whether the code performed the task I intended. When I encountered difficulties, returning to the basic concepts helped me identify what I needed to change.</p><p>Preparing my e-portfolio also gave me an opportunity to review my activities and reflect on my progress. Looking back at my work helped me recognize the areas where I had improved and the concepts that still needed more practice. By the end of the final term, I understood more clearly that becoming better at programming is a gradual process. I want to continue strengthening my Java skills and develop the confidence to solve problems with less assistance while making sure I understand the solutions I create.</p></template>
+  </div>
+</section>
 
     <section id="contact" class="section contact-section" aria-labelledby="contact-title">
       <div class="container">

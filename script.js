@@ -58,36 +58,92 @@
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
-  const tabs = Array.from(document.querySelectorAll('[data-term]'));
-  const termTitle = document.getElementById('term-title');
-  const termPanel = document.getElementById('reflection-panel');
-  const entries = {
-    'Prelim Term': 'My personal reflection for this term has not been uploaded yet. This space is reserved for the lessons and experiences I want to remember.',
-    'Midterm': 'My Midterm reflection will be added here once it is complete. This entry is intentionally left open rather than filled with sample text.',
-    'Final Term': 'My Final Term reflection has not been added yet. I will use this section to look back on what I have learned.'
+  // Reflection volumes replace the former placeholder tabs.
+/* 3D reflection volumes: lightweight, keyboard-accessible, zero extra dependencies. */
+function initReflectionBooks() {
+  const showcase = document.getElementById('reflection-showcase');
+  const shelf = document.getElementById('reflection-shelf');
+  const reader = document.getElementById('reflection-reader');
+  if (!showcase || !shelf || !reader) return;
+  const tiles = Array.from(showcase.querySelectorAll('[data-book]'));
+  const close = document.getElementById('reader-close');
+  const previous = document.getElementById('reader-previous');
+  const next = document.getElementById('reader-next');
+  const content = document.getElementById('reader-body');
+  const cover = document.getElementById('reflection-openbook');
+  const quietMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const chapters = [
+    { id: 'prelim', title: 'Prelim Term', sequence: '01', kicker: '01 / PRELIM TERM', cover: 'FIRST<br>PRINCIPLES.', coverColor: '#d9e1d4', coverInk: '#274337' },
+    { id: 'midterm', title: 'Midterm', sequence: '02', kicker: '02 / MIDTERM', cover: 'THINK.<br>TRACE.<br>REPEAT.', coverColor: '#bed3c5', coverInk: '#244a38' },
+    { id: 'final', title: 'Final Term', sequence: '03', kicker: '03 / FINAL TERM', cover: 'ALWAYS<br>IN<br>PROGRESS.', coverColor: '#446b58', coverInk: '#f3f2e6' }
+  ];
+  let active = -1;
+  let returnFocus = null;
+  let animationFrame = 0;
+
+  const showChapter = (index, opening) => {
+    const chapter = chapters[index];
+    const template = document.getElementById('reflection-' + chapter.id);
+    if (!template) return;
+    active = index;
+    content.replaceChildren(template.content.cloneNode(true));
+    content.scrollTop = 0;
+    document.getElementById('reader-title').innerHTML = chapter.title + ' <em>Reflection</em>';
+    document.getElementById('reader-kicker').textContent = chapter.kicker;
+    document.getElementById('reader-count').textContent = chapter.sequence + ' / 03';
+    document.getElementById('reader-edition').textContent = 'VOL. ' + chapter.sequence + ' / AN ACADEMIC JOURNAL';
+    document.getElementById('reader-figure').textContent = chapter.sequence;
+    document.getElementById('reader-cover-eyebrow').textContent = chapter.title.toUpperCase() + ' / 2026';
+    document.getElementById('reader-cover-text').innerHTML = chapter.cover;
+    cover.style.setProperty('--reader-cover', chapter.coverColor);
+    cover.style.setProperty('--reader-ink', chapter.coverInk);
+    previous.disabled = index === 0;
+    next.disabled = index === chapters.length - 1;
+    if (opening) {
+      shelf.hidden = true;
+      reader.hidden = false;
+      reader.classList.remove('reader-visible');
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(() => {
+        animationFrame = requestAnimationFrame(() => reader.classList.add('reader-visible'));
+      });
+      showcase.scrollIntoView({ behavior: quietMotion ? 'auto' : 'smooth', block: 'start' });
+      close.focus({ preventScroll: true });
+    } else {
+      // Settle the book before a page change; keep the reader panel stable.
+      reader.classList.remove('reader-visible');
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(() => {
+        animationFrame = requestAnimationFrame(() => reader.classList.add('reader-visible'));
+      });
+    }
   };
-  function activateTab(selected, focus) {
-    tabs.forEach((tab) => {
-      const active = tab === selected;
-      tab.setAttribute('aria-selected', String(active));
-      tab.tabIndex = active ? 0 : -1;
-    });
-    termTitle.textContent = selected.dataset.term;
-    document.getElementById('term-body').textContent = entries[selected.dataset.term];
-    termPanel.setAttribute('aria-labelledby', selected.id);
-    if (focus) selected.focus();
-  }
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => activateTab(tab, false));
-    tab.addEventListener('keydown', (event) => {
-      let next = -1;
-      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
-      if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = tabs.length - 1;
-      if (next !== -1) { event.preventDefault(); activateTab(tabs[next], true); }
+
+  tiles.forEach((tile, index) => {
+    tile.addEventListener('click', () => {
+      returnFocus = tile;
+      showChapter(index, true);
     });
   });
+  const closeReader = () => {
+    if (reader.hidden) return;
+    cancelAnimationFrame(animationFrame);
+    reader.classList.remove('reader-visible');
+    reader.hidden = true;
+    shelf.hidden = false;
+    const target = returnFocus || tiles[0];
+    if (target) target.focus({ preventScroll: true });
+    active = -1;
+    showcase.scrollIntoView({ behavior: quietMotion ? 'auto' : 'smooth', block: 'start' });
+  };
+  close.addEventListener('click', closeReader);
+  previous.addEventListener('click', () => { if (active > 0) showChapter(active - 1, false); });
+  next.addEventListener('click', () => { if (active < chapters.length - 1) showChapter(active + 1, false); });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !reader.hidden) { event.preventDefault(); closeReader(); }
+  });
+}
+initReflectionBooks();
 
   const form = document.getElementById('contact-form');
   form.addEventListener('submit', (event) => {
