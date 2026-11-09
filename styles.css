@@ -933,3 +933,42 @@ html.light .contact-form {background:var(--surface);}
 @media(prefers-reduced-motion:reduce){
   .credential-card,.credential-preview img,.desktop-nav .nav-contact{transition:none!important;}
 }
+
+/* Minimal editorial wordmark inspired by a two-weight typographic signature. */
+.brand--wordmark {
+  min-width:0;
+  width:max-content;
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  white-space:nowrap;
+}
+.brand-wordmark {
+  display:inline-flex;
+  align-items:baseline;
+  gap:.23em;
+  font-family:var(--type-sans),'Manrope',system-ui,sans-serif;
+  font-size:clamp(20px,1.55vw,25px);
+  line-height:1.15;
+  letter-spacing:-.055em;
+  color:var(--ink);
+}
+.brand-wordmark strong {
+  font:inherit;
+  font-weight:800;
+  letter-spacing:-.06em;
+}
+.brand-wordmark > span {
+  font-weight:450;
+  letter-spacing:-.055em;
+  color:var(--muted);
+}
+.brand--wordmark:hover .brand-wordmark > span,
+.brand--wordmark:focus-visible .brand-wordmark > span { color:var(--ink); }
+@media(max-width:740px){
+  .brand-wordmark { font-size:21px; }
+}
+@media(max-width:380px){
+  .brand-wordmark { font-size:19px; gap:.18em; }
+}
