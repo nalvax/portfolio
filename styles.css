@@ -555,3 +555,18 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
   .reflection-openbook__coverback .reflection-openbook__index li span { font-size:5px; line-height:1.25; }
   .reflection-openbook__coverback .reflection-openbook__index li { padding:2px 0; }
 }
+
+/* Low-cost foliage accents from the supplied book-reference animation. */
+.reflection-reader__scene { position:relative; isolation:isolate; }
+.reflection-openbook { z-index:2; }
+.reflection-reader__leaves { position:absolute; inset:5% 1%; z-index:0; overflow:hidden; pointer-events:none; }
+.reflection-reader__leaves i { position:absolute; display:block; width:16px; height:9px; border-radius:85% 0 85% 0; background:#739785; box-shadow:inset 2px 1px 3px rgba(212,246,206,.2); opacity:0; transform:translate3d(0,42px,0) rotate(12deg); }
+.reflection-reader__leaves i:nth-child(1) { left:10%; top:19%; --rx:24px; --ry:-57px; --rr:180deg; --delay:.1s; }
+.reflection-reader__leaves i:nth-child(2) { left:87%; top:10%; --rx:-23px; --ry:55px; --rr:290deg; --delay:.5s; }
+.reflection-reader__leaves i:nth-child(3) { left:3%; top:63%; --rx:48px; --ry:21px; --rr:240deg; --delay:.25s; }
+.reflection-reader__leaves i:nth-child(4) { left:90%; top:73%; --rx:-61px; --ry:-52px; --rr:180deg; --delay:.6s; }
+.reflection-reader__leaves i:nth-child(5) { left:68%; top:7%; --rx:37px; --ry:44px; --rr:320deg; --delay:.8s; }
+.reflection-reader.reader-visible .reflection-reader__leaves i { animation:bookleaf 4.6s ease-in-out var(--delay) infinite alternate; }
+@keyframes bookleaf { 0%{opacity:0; transform:translate3d(0,32px,0) rotate(-25deg) scale(.5)} 20%{opacity:.68} 70%{opacity:.7} 100%{opacity:.15; transform:translate3d(var(--rx),var(--ry),0) rotate(var(--rr)) scale(.85)} }
+@media(max-width:760px){ .reflection-reader__leaves {display:none;} }
+@media(prefers-reduced-motion:reduce){ .reflection-reader__leaves i {animation:none!important;opacity:0!important;} }
