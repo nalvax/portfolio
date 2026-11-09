@@ -644,3 +644,51 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 }
 .reflection-openbook__coverface .reflection-cover-print .reflection-book__title {margin-top:30px; font-size:clamp(22px,2.25vw,34px);}
 @media(max-width:760px){.reflection-openbook__coverface .reflection-cover-print {padding:10px;} .reflection-openbook__coverface .reflection-cover-print .reflection-book__title {margin-top:18px;font-size:clamp(15px,3.2vw,20px);}}
+
+/* External achievements — real certificate gallery */
+.certificates-section { background: var(--bg); }
+.credential-index { display: flex; justify-content: space-between; gap: 18px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--low); }
+.credentials-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 32px; }
+.credential-card { display: flex; flex-direction: column; min-width: 0; background: var(--surface); border: 1px solid var(--line); transition: border-color .25s ease, transform .3s cubic-bezier(.22,.7,.2,1); }
+.credential-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.credential-preview { position: relative; display: block; overflow: hidden; aspect-ratio: 1.315 / 1; background: #e7e8e0; border-bottom: 1px solid var(--line); }
+.credential-preview img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .4s cubic-bezier(.2,.8,.2,1); }
+.credential-preview:hover img, .credential-preview:focus-visible img { transform: scale(1.025); }
+.credential-preview-arrow { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 35px; height: 35px; background: var(--bg); border: 1px solid var(--line); color: var(--ink); font-size: 17px; }
+.credential-detail { display: flex; flex: 1; flex-direction: column; min-width: 0; padding: 25px 24px 22px; }
+.credential-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--low); font-size: 9px; line-height: 1.5; }
+.credential-meta span { color: var(--accent); }
+.credential-card h3 { margin: 22px 0 7px; color: var(--ink); font-size: clamp(21px, 2vw, 31px); font-weight: 500; letter-spacing: -.05em; line-height: 1.2; overflow-wrap: break-word; }
+.credential-issuer { margin: 4px 0 0; color: var(--ink); font-size: 12px; font-weight: 600; }
+.credential-issuer span { color: var(--accent); }
+.credential-description { max-width: 350px; margin: 16px 0 28px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+.credential-actions { display: grid; gap: 0; margin-top: auto; border-top: 1px solid var(--line); }
+.credential-actions a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 0; color: var(--ink); border-bottom: 1px solid var(--line); font-size: 12px; font-weight: 600; transition: color .2s; }
+.credential-actions a:hover { color: var(--accent); }
+.credential-actions a span { font-size: 16px; font-weight: 400; }
+.credential-footnote { margin: 25px 0 0; color: var(--low); font-size: 9px; line-height: 1.75; }
+.journey-credential-link { text-decoration: none; transition: color .2s; }
+.journey-credential-link:hover { color: var(--accent); }
+@media(max-width:1100px) {
+  .credentials-grid { gap: 14px; }
+  .credential-detail { padding: 22px 19px 19px; }
+  .credential-meta { display: grid; gap: 3px; }
+  .credential-card h3 { font-size: clamp(19px, 2.2vw, 26px); }
+}
+@media(max-width:800px) {
+  .credentials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .credentials-grid .credential-card:last-child { grid-column: span 2; }
+  .credentials-grid .credential-card:last-child .credential-preview { aspect-ratio: 2 / 1; }
+}
+@media(max-width:560px) {
+  .credential-index { flex-direction: column; gap: 5px; font-size: 9px; }
+  .credentials-grid { grid-template-columns: 1fr; gap: 20px; }
+  .credentials-grid .credential-card:last-child { grid-column: auto; }
+  .credentials-grid .credential-card:last-child .credential-preview { aspect-ratio: 1.315 / 1; }
+  .credential-card h3 { font-size: clamp(24px, 6vw, 30px); }
+  .credential-meta { display: flex; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .credential-card, .credential-preview img { transition: none; }
+  .credential-card:hover, .credential-preview:hover img { transform: none; }
+}
