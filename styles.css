@@ -692,3 +692,35 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
   .credential-card, .credential-preview img { transition: none; }
   .credential-card:hover, .credential-preview:hover img { transform: none; }
 }
+
+/* Clear, full-size term names below each reflection book (shelf only).
+   Keep book covers, navigation and animations untouched. */
+.reflection-shelf .reflection-book__meta {
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding-top: 13px;
+}
+.reflection-shelf .reflection-book__meta .reflection-book__term {
+  display: inline-block;
+  min-width: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: clamp(17px, 1.48vw, 22px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+  color: #eff4eb;
+  white-space: nowrap;
+}
+.reflection-shelf .reflection-book__meta .reflection-book__read {
+  flex: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  color: #b5d6b9;
+}
+@media (max-width: 760px) {
+  .reflection-shelf .reflection-book__meta .reflection-book__term { font-size: 19px; }
+}
