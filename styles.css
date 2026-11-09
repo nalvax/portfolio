@@ -1022,3 +1022,68 @@ html.light .contact-form {background:var(--surface);}
 .reflection-reader__footer {
   border-top-color:#466350;
 }
+
+/* iOS Safari / touch accessibility — no visual redesign. */
+html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+button, a, summary, input, textarea { -webkit-tap-highlight-color:transparent; }
+button, a, summary { touch-action:manipulation; }
+button, input, textarea { -webkit-appearance:none; appearance:none; }
+.theme-toggle {width:44px;min-width:44px;height:44px;min-height:44px;}
+.theme-icon {display:block;width:20px;height:20px;flex:none;pointer-events:none;}
+.theme-icon--moon {display:none;}
+html.light .theme-icon--sun {display:none;}
+html.light .theme-icon--moon {display:block;}
+.menu-toggle {min-width:44px;min-height:44px;}
+.mobile-nav a {min-height:48px;}
+.reflection-book,.reflection-reader__close,.reflection-reader__footer button {touch-action:manipulation;}
+.reflection-reader__close {min-height:44px;}
+.reflection-reader__footer button {min-height:44px;display:inline-flex;align-items:center;padding:11px 9px;}
+.reflection-reader__body,.reflection-books,.benjo-photo-stage,.benjo-image-stage {
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
+.reflection-books {scroll-padding-inline:24px;}
+.reflection-flight { -webkit-backface-visibility:hidden;backface-visibility:hidden;will-change:transform,opacity; }
+.reflection-book__object,.reflection-openbook,.reflection-openbook__cover,.reflection-openbook__sheet {
+  -webkit-transform-style:preserve-3d;
+  transform-style:preserve-3d;
+}
+.reflection-openbook__coverface,.reflection-openbook__coverback {
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+}
+.benjo-image-viewer,.benjo-pdf-viewer {overscroll-behavior:contain;}
+.benjo-image-close,.benjo-image-prev,.benjo-image-next,.benjo-pdf-close {min-width:44px;min-height:44px;font-family:var(--type-sans),Arial,sans-serif;}
+.benjo-pdf-footer a,.credential-actions a {min-height:44px;}
+@media(max-width:980px) {
+  .contact-form input,.contact-form textarea {font-size:16px !important;line-height:1.55;}
+  .contact-form input::placeholder,.contact-form textarea::placeholder {font-size:16px;}
+}
+@media(hover:none),(pointer:coarse) {
+  /* iPhone Safari simulates :hover after touch; remove persistent floating/tilting. */
+  .reflection-shelf .reflection-book:hover .reflection-book__object {
+    transform:perspective(1300px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0) !important;
+    filter:none !important;
+  }
+  .reflection-book__hint {display:none !important;}
+  .button-primary:hover {transform:none;background:var(--accent);color:var(--accent-ink);}
+  .schoolwork-photo:hover img {transform:none;filter:none;}
+  .schoolwork-photo-label {opacity:1;transform:none;}
+}
+@media(max-width:700px) {
+  .benjo-image-viewer,.benjo-pdf-viewer {max-height:100vh;max-height:100dvh;}
+  .benjo-image-panel {height:100vh;height:100dvh;}
+  .benjo-image-top {padding-top:max(16px,env(safe-area-inset-top));}
+  .benjo-image-bottom {padding-bottom:max(16px,env(safe-area-inset-bottom));}
+  .benjo-pdf-header {padding-top:max(30px,env(safe-area-inset-top));}
+  .benjo-pdf-footer {padding-bottom:max(20px,env(safe-area-inset-bottom));}
+  .benjo-image-prev,.benjo-image-next {min-width:44px;min-height:44px;}
+}
+@supports not (color:color-mix(in srgb,black,white)) {
+  .reflection-book__front,.reflection-book__spine {border-color:#728477;}
+  .reflection-book__front::after {border-color:#a4b3aa;}
+  .reflection-book__spine {background:var(--cover);}
+}
+@media(prefers-reduced-motion:reduce) {
+  .reflection-flight {transition:none!important;animation:none!important;}
+}

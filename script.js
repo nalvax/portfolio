@@ -8,7 +8,7 @@
   if (savedTheme === 'light') root.classList.add('light');
   const updateThemeButton = () => {
     const light = root.classList.contains('light');
-    themeButton.textContent = light ? '☾' : '☼';
+    // Both states are stable inline SVGs, avoiding iOS emoji/glyph substitutions.
     themeButton.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
     document.querySelector('meta[name="theme-color"]').setAttribute('content', light ? '#f6f5ef' : '#111713');
   };
@@ -163,11 +163,8 @@ function initReflectionBooks() {
   }
 
   async function travel(node, from, to, duration, reverse = false) {
-    if (!duration) {
-      node.style.left = to.left + 'px';
-      node.style.top = to.top + 'px';
-      node.style.width = to.width + 'px';
-      node.style.height = to.height + 'px';
+    if (!duration || typeof node.animate !== 'function') {
+      Object.assign(node.style, { left:to.left+'px', top:to.top+'px', width:to.width+'px', height:to.height+'px' });
       return;
     }
     const dx = to.left - from.left;
@@ -175,23 +172,31 @@ function initReflectionBooks() {
     const sx = to.width / Math.max(1,from.width);
     const sy = to.height / Math.max(1,from.height);
     const midpoint = reverse ? .43 : .52;
-    const anim = node.animate([
+    let anim;
+    try { anim = node.animate([
       { transform:'translate3d(0,0,0) scale(1,1)', offset:0 },
       { transform:`translate3d(${(dx*midpoint).toFixed(2)}px,${(dy*midpoint-12).toFixed(2)}px,0) scale(${(1+(sx-1)*midpoint).toFixed(4)},${(1+(sy-1)*midpoint).toFixed(4)})`, offset:midpoint },
       { transform:`translate3d(${dx.toFixed(2)}px,${dy.toFixed(2)}px,0) scale(${sx.toFixed(4)},${sy.toFixed(4)})`, offset:1 }
     ], { duration, easing: reverse?'cubic-bezier(.22,.69,.25,1)':'cubic-bezier(.22,.75,.18,1)', fill:'forwards' });
     overlayAnimation = anim;
-    try { await anim.finished; } catch(e) {}
+    if (anim.finished && typeof anim.finished.then === 'function') await anim.finished.catch(() => {});
+    else await pause(duration);
+    } catch (error) {
+      Object.assign(node.style, { left:to.left+'px', top:to.top+'px', width:to.width+'px', height:to.height+'px', transform:'none' });
+    }
   }
 
   async function fadeOverlay(id) {
     if (!overlay || !alive(id)) return;
     const node = overlay;
     const dur = timing().fade;
-    if (dur) {
-      const fade = node.animate([{opacity:1},{opacity:0}],{duration:dur,easing:'ease-out',fill:'forwards'});
-      overlayAnimation = fade;
-      try { await fade.finished; } catch(e) {}
+    if (dur && typeof node.animate === 'function') {
+      try {
+        const fade = node.animate([{opacity:1},{opacity:0}],{duration:dur,easing:'ease-out',fill:'forwards'});
+        overlayAnimation = fade;
+        if (fade.finished && typeof fade.finished.then === 'function') await fade.finished.catch(() => {});
+        else await pause(dur);
+      } catch (error) { node.style.opacity = '0'; }
     }
     if (alive(id)) cleanupOverlay();
   }
@@ -337,19 +342,9 @@ initReflectionBooks();
 
 
 
+  // Contact form is display-only by request: never imply that pressing Return sends it.
   const form = document.getElementById('contact-form');
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    const name = form.elements.namedItem('name').value.trim();
-    const email = form.elements.namedItem('email').value.trim();
-    const message = form.elements.namedItem('message').value.trim();
-    if (!name || !email || !message) return;
-    const subject = encodeURIComponent('Portfolio enquiry from ' + name);
-    const body = encodeURIComponent(message + '\n\nFrom: ' + name + '\nReply to: ' + email);
-    document.getElementById('form-status').textContent = 'Opening your email app — please send the prepared email from there.';
-    window.location.href = 'mailto:BENJO.TERRADO@MY.JRU.EDU?subject=' + subject + '&body=' + body;
-  });
+  if (form) form.addEventListener('submit', event => event.preventDefault());
 
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const revealItems = Array.from(document.querySelectorAll('[data-reveal]'));
@@ -370,6 +365,12 @@ initReflectionBooks();
     if (!window.HTMLDialogElement || typeof HTMLDialogElement.prototype.showModal !== 'function') return;
     const plainClick = event => !event.defaultPrevented && event.button === 0 &&
       !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey;
+    const iOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (iOS) pdfLinks.forEach(link => {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    });
     let imageDialog = null, pdfDialog = null, previousFocus = null, currentImage = 0;
     function restoreFocus() {
       document.body.classList.remove('benjo-archive-open');
@@ -427,9 +428,13 @@ initReflectionBooks();
       mountImageDialog();
       previousFocus = document.activeElement;
       showImage(index);
-      imageDialog.showModal();
-      document.body.classList.add('benjo-archive-open');
-      imageDialog.querySelector('.benjo-image-close').focus({ preventScroll: true });
+      try {
+        imageDialog.showModal();
+        document.body.classList.add('benjo-archive-open');
+        imageDialog.querySelector('.benjo-image-close').focus({ preventScroll: true });
+      } catch (error) {
+        window.location.assign(link.href); // Fallback if older WebKit cannot open the dialog.
+      }
     }));
     function mountPdfDialog() {
       if (pdfDialog) return;
@@ -457,7 +462,7 @@ initReflectionBooks();
       });
     }
     pdfLinks.forEach(link => link.addEventListener('click', e => {
-      if (!plainClick(e)) return;
+      if (!plainClick(e) || iOS) return; // Native Safari PDF reader and Share/Download controls.
       e.preventDefault();
       mountPdfDialog();
       previousFocus = document.activeElement;
@@ -470,10 +475,14 @@ initReflectionBooks();
       download.download = decodeURIComponent(new URL(url).pathname.split('/').pop() || 'certificate.pdf');
       pdfDialog.querySelector('.benjo-pdf-external').href = url;
       pdfDialog.querySelector('.benjo-pdf-loading').hidden = false;
-      pdfDialog.showModal();
-      document.body.classList.add('benjo-archive-open');
-      pdfDialog.querySelector('.benjo-pdf-iframe').src = url + '#toolbar=1&navpanes=0&view=FitH';
-      pdfDialog.querySelector('.benjo-pdf-close').focus({ preventScroll: true });
+      try {
+        pdfDialog.showModal();
+        document.body.classList.add('benjo-archive-open');
+        pdfDialog.querySelector('.benjo-pdf-iframe').src = url + '#toolbar=1&navpanes=0&view=FitH';
+        pdfDialog.querySelector('.benjo-pdf-close').focus({ preventScroll: true });
+      } catch (error) {
+        window.location.assign(url);
+      }
     }));
   }
   initBenjoArchiveViewers();
