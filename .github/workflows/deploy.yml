@@ -33,6 +33,9 @@ jobs:
 
       # Publish the EXACT same root HTML website as branch-based GitHub Pages.
       # Do not build a second, visually different Next.js homepage.
+      - name: Verify website JavaScript
+        run: node --check script.js
+
       - name: Assemble website
         run: |
           mkdir -p out
