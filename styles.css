@@ -6,7 +6,7 @@
   --surface-alt: #202a27;
   --ink: #f0f0e8;
   --muted: #a5b0a9;
-  --low: #75857d;
+  --low: #9bafa3;
   --line: #35423d;
   --accent: #c8dfce;
   --accent-ink: #14291e;
@@ -21,7 +21,7 @@ html.light {
   --surface-alt: #dde2d9;
   --ink: #1b2721;
   --muted: #536459;
-  --low: #657267;
+  --low: #4e6055;
   --line: #ccd1c8;
   --accent: #305a46;
   --accent-ink: #f5f3e9;
@@ -31,8 +31,8 @@ html.light {
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'DM Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-body, button, input, textarea { font-family: 'DM Sans', system-ui, sans-serif; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body, button, input, textarea { font-family: 'Inter', system-ui, sans-serif; }
 body::selection { background: var(--accent); color: var(--accent-ink); }
 button, input, textarea { font-size: inherit; }
 button { cursor: pointer; }
@@ -318,7 +318,7 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 .reflection-reader { position: relative; background: radial-gradient(ellipse at 20% 40%, #244136, #142620 52%, #111d1a); min-height: 590px; }
 .reflection-reader__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 28px; border-bottom: 1px solid #394e45; font-size: 10px; color: #b8cbbd; }
 .reflection-reader__close { display: inline-flex; align-items: center; gap: 15px; background: none; border: 1px solid #6a8174; color: #f3f2e7; padding: 8px 10px 8px 15px; font-family: 'IBM Plex Mono',monospace; font-size: 10px; letter-spacing: .12em; }
-.reflection-reader__close span { display: grid; place-items: center; font: 22px/1 'DM Sans',sans-serif; width: 26px; height: 26px; border-radius: 50%; background: #e6ebdf; color: #17362a; }
+.reflection-reader__close span { display: grid; place-items: center; font: 22px/1 'Inter',sans-serif; width: 26px; height: 26px; border-radius: 50%; background: #e6ebdf; color: #17362a; }
 .reflection-reader__close:hover { background: #23382d; }
 .reflection-reader__layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); align-items: center; gap: clamp(34px, 5vw, 76px); min-height: 520px; padding: 35px clamp(24px,4vw,65px) 42px; }
 .reflection-reader__scene { min-width: 0; display: grid; place-items: center; align-content: center; min-height: 465px; perspective: 1400px; }
@@ -427,7 +427,7 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 .reflection-book__front::before { content:''; position:absolute; z-index:0; inset:0; pointer-events:none; opacity:.2; background:repeating-linear-gradient(45deg,rgba(23,40,34,.05) 0 1px,transparent 1px 4px); }
 .reflection-book__front::after { inset:9px; border-color:color-mix(in srgb,var(--cover-ink) 18%,transparent); }
 .reflection-book__edition { font-size:7px; line-height:1.45; letter-spacing:.04em; }
-.reflection-book__title { font-family:'Arial Narrow','DM Sans',sans-serif; margin-top:41px; font-weight:700; font-size:clamp(24px,2.15vw,31px); line-height:1.05; letter-spacing:-.075em; }
+.reflection-book__title { font-family:'Arial Narrow','Inter',sans-serif; margin-top:41px; font-weight:700; font-size:clamp(24px,2.15vw,31px); line-height:1.05; letter-spacing:-.075em; }
 .reflection-book__art { inset:47% 13% 17%; opacity:.9; }
 .reflection-book__art svg { display:block; width:100%; height:100%; fill:none; overflow:visible; stroke:var(--cover-ink); stroke-width:1.15; stroke-linecap:round; stroke-linejoin:round; }
 .reflection-book__art svg .accent-line { stroke:var(--cover-accent); stroke-width:2; }
@@ -704,7 +704,7 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 .reflection-shelf .reflection-book__meta .reflection-book__term {
   display: inline-block;
   min-width: 0;
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(17px, 1.48vw, 22px);
   font-weight: 700;
   line-height: 1.12;
@@ -766,13 +766,13 @@ body.benjo-archive-open{overflow:hidden}
 .benjo-image-top>span,.benjo-image-count{font:600 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.09em;color:#c0d8c5}
 .benjo-image-close,.benjo-image-prev,.benjo-image-next{flex:none;display:grid;place-items:center;border:1px solid #688876;border-radius:50%;background:#1f3126;color:#f2f7ef;cursor:pointer;transition:background .2s}
 .benjo-image-close{width:39px;height:39px;font-size:18px}
-.benjo-image-prev,.benjo-image-next{position:absolute;z-index:1;top:50%;transform:translateY(-50%);width:44px;height:44px;font:300 30px/1 'DM Sans',sans-serif}
+.benjo-image-prev,.benjo-image-next{position:absolute;z-index:1;top:50%;transform:translateY(-50%);width:44px;height:44px;font:300 30px/1 'Inter',sans-serif}
 .benjo-image-prev{left:15px}.benjo-image-next{right:15px}
 .benjo-image-close:hover,.benjo-image-prev:hover,.benjo-image-next:hover{background:#335842}
 .benjo-image-stage{position:relative;display:flex;align-items:center;justify-content:center;flex:1 1 auto;min-height:150px;padding:14px 73px;overflow:hidden;background:radial-gradient(circle at 50% 36%,#283e32,#0b110d 79%)}
 .benjo-image-original{display:block;max-width:100%;max-height:min(70dvh,750px);width:auto;height:auto;object-fit:contain;user-select:none;box-shadow:0 9px 44px #0007}
-.benjo-image-name{display:block;font:700 clamp(15px,1.7vw,21px)/1.25 'DM Sans',sans-serif}
-.benjo-image-caption{margin:5px 0 0;color:#b3c4b6;font:400 12px/1.4 'DM Sans',sans-serif}
+.benjo-image-name{display:block;font:700 clamp(15px,1.7vw,21px)/1.25 'Inter',sans-serif}
+.benjo-image-caption{margin:5px 0 0;color:#b3c4b6;font:400 12px/1.4 'Inter',sans-serif}
 .benjo-image-count{white-space:nowrap}
 .benjo-image-viewer button:focus-visible,.benjo-pdf-viewer button:focus-visible{outline:2px solid #a6d2b2;outline-offset:3px}
 .benjo-pdf-viewer{width:min(960px,96vw);max-width:none;height:min(95dvh,1040px);max-height:none;margin:auto;padding:0;border:0;border-radius:4px;background:#f9faf7;color:#122019;box-shadow:0 34px 130px #0009;overflow:hidden}
@@ -782,14 +782,14 @@ body.benjo-archive-open{overflow:hidden}
 .benjo-pdf-close:hover{background:#e8eee8}
 .benjo-pdf-header{flex:none;padding:clamp(26px,4vw,44px) clamp(20px,4vw,46px) 20px}
 .benjo-pdf-kicker{display:block;font:650 10px/1.4 'IBM Plex Mono',monospace;letter-spacing:.11em;color:#617969}
-.benjo-pdf-name{margin:18px 46px 12px 0;color:#13291c;font:500 clamp(24px,3vw,42px)/1.1 'DM Sans',sans-serif;letter-spacing:-.05em}
-.benjo-pdf-header p{margin:0;color:#6d786f;font:400 13px/1.6 'DM Sans',sans-serif}
+.benjo-pdf-name{margin:18px 46px 12px 0;color:#13291c;font:500 clamp(24px,3vw,42px)/1.1 'Inter',sans-serif;letter-spacing:-.05em}
+.benjo-pdf-header p{margin:0;color:#6d786f;font:400 13px/1.6 'Inter',sans-serif}
 .benjo-pdf-document{position:relative;display:flex;flex:1;min-height:190px;margin:0 clamp(20px,4vw,46px);background:#242e28;overflow:hidden}
 .benjo-pdf-iframe{display:block;width:100%;height:100%;min-height:0;border:0;background:#242e28}
-.benjo-pdf-loading{position:absolute;inset:0;display:grid;place-items:center;background:#28302b;color:#d0dbd3;pointer-events:none;font:500 12px/1.4 'DM Sans',sans-serif}
+.benjo-pdf-loading{position:absolute;inset:0;display:grid;place-items:center;background:#28302b;color:#d0dbd3;pointer-events:none;font:500 12px/1.4 'Inter',sans-serif}
 .benjo-pdf-loading[hidden]{display:none}
 .benjo-pdf-footer{display:flex;align-items:center;flex-wrap:wrap;flex:none;gap:12px 25px;padding:17px clamp(20px,4vw,46px) 25px}
-.benjo-pdf-footer a{font:600 12px/1.3 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap}
+.benjo-pdf-footer a{font:600 12px/1.3 'Inter',sans-serif;text-decoration:none;white-space:nowrap}
 .benjo-pdf-download{padding:13px 19px;border-radius:99px;background:#162c20;color:#fff!important}
 .benjo-pdf-download:hover{background:#365c42}
 .benjo-pdf-external{padding:9px 0;border-bottom:1px solid #97a79b;color:#172a1e!important}
@@ -800,3 +800,91 @@ body.benjo-archive-open{overflow:hidden}
 @media(max-width:700px){.benjo-image-viewer{width:100vw;max-height:100dvh;border-radius:0}.benjo-image-panel{height:100dvh;max-height:100dvh}.benjo-image-stage{padding:10px 47px}.benjo-image-original{max-height:75dvh}.benjo-image-prev,.benjo-image-next{width:36px;height:41px;font-size:25px}.benjo-image-prev{left:4px}.benjo-image-next{right:4px}.benjo-image-top>span{font-size:9px}.benjo-pdf-viewer{width:100vw;height:100dvh;border-radius:0}.benjo-pdf-header{padding:31px 19px 19px}.benjo-pdf-name{font-size:clamp(23px,6vw,35px)}.benjo-pdf-document{margin:0 11px}.benjo-pdf-footer{padding:13px 17px 20px;gap:10px 17px}.benjo-pdf-footer>span{flex-basis:100%;margin-left:0}}
 @media(hover:none),(pointer:coarse){.certificates-section .credential-preview[data-view-pdf]::after{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.benjo-image-close,.benjo-image-prev,.benjo-image-next,.certificates-section .credential-preview[data-view-pdf]::after{transition:none}}
+
+/* Readability pass — Inter for UI, Instrument Serif for display accents, Plex Mono for metadata. */
+body {font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.7;letter-spacing:-.01em;}
+button,input,textarea {font-family:'Inter',system-ui,sans-serif;}
+.mono,.section-index,.fact-label {font-size:12px;line-height:1.55;letter-spacing:.03em;}
+.brand-name {font-size:12px;letter-spacing:.05em;line-height:1.45;}
+.brand-name small {font-size:10px;letter-spacing:.06em;}
+.desktop-nav a {font-size:13px;letter-spacing:0;font-weight:600;}
+.mobile-nav a span {font-size:12px;}
+.hero-overline,.hero-kicker,.hero-note,.hero-baseline {font-size:11px;letter-spacing:.05em;line-height:1.5;}
+.hero h1 {letter-spacing:-.078em;line-height:.93;}
+.hero h1 em {letter-spacing:-.038em;}
+.hero-manifesto {letter-spacing:-.025em;line-height:1.38;}
+.hero-description {font-size:clamp(15px,1.15vw,17px);line-height:1.8;}
+.button-primary {font-size:14px;}
+.art-stamp,.art-footer,.art-coordinate,.art-caption {font-size:10px;line-height:1.55;}
+.section h2 {letter-spacing:-.06em;line-height:1.09;text-wrap:balance;}
+.section-intro {font-size:clamp(15px,1.25vw,18px);line-height:1.75;max-width:780px;}
+.identity-top,.identity-bottom .mono {font-size:11px;}
+.about-lead {letter-spacing:-.034em!important;line-height:1.36!important;}
+.about-copy>p:not(.about-lead) {font-size:16px;line-height:1.82;}
+.facts-grid .fact-label {font-size:11px;}
+.facts-grid strong {font-size:15px;line-height:1.5;}
+.credential-index {font-size:12px;letter-spacing:.025em;line-height:1.6;}
+.credential-meta {font-size:11.5px;letter-spacing:.025em;line-height:1.6;}
+.credential-card h3 {font-size:clamp(23px,2.1vw,32px);letter-spacing:-.036em;line-height:1.3;}
+.credential-issuer {font-size:13px;line-height:1.5;}
+.credential-description {font-size:14px;line-height:1.78;}
+.credential-actions a {font-size:13px;min-height:44px;line-height:1.5;}
+.credential-footnote {font-size:11px;line-height:1.65;}
+.schoolwork-details>summary {font-size:14px;min-height:46px;}
+.schoolwork-records-heading {font-size:11px;line-height:1.5;}
+.schoolwork-records li {font-size:13px;line-height:1.6;}
+.schoolwork-detail-score {font-size:12px;font-weight:600;}
+.schoolwork-detail-state {font-size:11px;}
+.schoolwork-photo-label {font-size:11px;}
+.reflection-showcase__top,.reflection-reader__top {font-size:12px;line-height:1.5;}
+.reflection-book__edition {font-size:10px;line-height:1.45;letter-spacing:.015em;}
+.reflection-book__spine {font-size:9px;letter-spacing:.02em;}
+.reflection-book__bottom {font-size:10px;letter-spacing:.015em;}
+.reflection-shelf__bottom {font-size:11px;line-height:1.5;}
+.reflection-book__meta .reflection-book__term {letter-spacing:-.02em;}
+.reflection-book__meta .reflection-book__read {font-size:12px;}
+.reflection-reader__kicker,.reflection-reader__scrollhint {font-size:12px;}
+.reflection-reader__copy h3 {letter-spacing:-.04em;line-height:1.08;}
+.reflection-reader__body p {font-size:16px;line-height:1.8;color:#e7ece5;}
+.reflection-reader__footer,.reflection-reader__footer button {font-size:12px;line-height:1.5;}
+.reflection-reader__close {font-size:12px;}
+.reflection-openbook__inside-kicker,.reflection-openbook__inside small,.reflection-openbook__coverback small {font-size:10px;}
+.reflection-cover-print .reflection-book__edition {font-size:10px;}
+.contact-label {font-size:12px;}
+.contact-copy>p {font-size:15px;line-height:1.75;}
+.contact-fine {font-size:12px;}
+.form-top {font-size:12px;}
+.contact-form label {font-size:14px;}
+.contact-form input,.contact-form textarea {font-size:15px;line-height:1.6;}
+.form-status {font-size:12px;line-height:1.6;color:var(--muted);}
+.footer-content p,.footer-top {font-size:12px;line-height:1.6;}
+.footer-content p span {color:var(--muted);}
+.benjo-image-top>span,.benjo-image-count {font-size:12px;letter-spacing:.03em;}
+.benjo-image-caption {font-size:13px;line-height:1.6;}
+.benjo-pdf-kicker {font-size:12px;color:#4c6757;letter-spacing:.04em;}
+.benjo-pdf-header p {font-size:14px;}
+.benjo-pdf-footer a {font-size:13px;}
+.benjo-pdf-footer>span {font-size:11px;color:#526756;}
+.benjo-pdf-loading {font-size:14px;}
+@media(max-width:740px){
+ .brand-name{font-size:11px}.brand-name small{font-size:10px}
+ .hero-overline,.hero-kicker,.hero-baseline{font-size:11px}
+ .hero h1{letter-spacing:-.088em}.hero-description{font-size:16px}
+ .section h2{letter-spacing:-.052em;line-height:1.1}
+ .reflection-showcase__top,.reflection-reader__top{font-size:11px}
+ .reflection-reader__body p{font-size:16px;line-height:1.75}
+ .credential-meta{font-size:12px}
+ .email-link{font-size:clamp(15px,3.4vw,20px);gap:7px}
+ .benjo-image-top>span{font-size:11px}
+}
+@media(max-width:430px){
+ .brand-name{font-size:10.5px}.brand-name small{font-size:9.5px}
+ .hero h1{font-size:clamp(66px,15vw,83px);letter-spacing:-.08em}
+ .hero-overline,.hero-kicker{font-size:10px}
+ .reflection-book__edition{font-size:9px}
+ .reflection-book__bottom{font-size:9.5px}
+ .reflection-shelf__bottom{font-size:10.5px}
+ .reflection-reader__close{font-size:11px}
+ .email-link{font-size:clamp(14px,3.6vw,17px)}
+ .footer-content p,.footer-top{font-size:11px}
+}
