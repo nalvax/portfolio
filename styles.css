@@ -724,3 +724,58 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 @media (max-width: 760px) {
   .reflection-shelf .reflection-book__meta .reflection-book__term { font-size: 19px; }
 }
+
+
+/* School Works — same editorial gallery structure as documented achievements */
+.schoolworks-section { background:var(--surface); }
+.schoolworks-section .credential-index { margin-bottom:0; }
+.schoolwork-grid { align-items:start; }
+.schoolwork-card { height:100%; }
+.schoolwork-preview { aspect-ratio:1.315 / 1; background:#eef6f8; padding:18px; cursor:default; color:#293744; }
+.schoolwork-preview--cyan { background:#eaf2f6; }
+.schoolwork-preview--ice { background:#edf2f3; }
+.schoolwork-ui { display:flex; flex-direction:column; width:100%; height:100%; padding:14px; overflow:hidden; border:1px solid #d6e4eb; border-radius:11px; background:#fbfdfe; box-shadow:0 10px 24px rgba(31,72,97,.11); }
+.schoolwork-ui-header { display:flex; align-items:center; gap:8px; padding-bottom:10px; border-bottom:1px solid #e3ecf1; color:#3b5364; font-size:10px; font-weight:700; }
+.schoolwork-ui-header small { margin-left:auto; color:#8999a4; font-family:'IBM Plex Mono',monospace; font-size:7px; letter-spacing:.08em; }
+.schoolwork-ui-logo { display:grid; place-items:center; width:25px; height:25px; border-radius:7px; background:#dff2f8; color:#29a6d5; font-size:13px; }
+.schoolwork-ui-logo span { color:#f6bc56; }
+.schoolwork-ui-title { display:flex; flex-direction:column; gap:4px; padding:13px 0 11px; }
+.schoolwork-ui-title > span { color:#7a96a5; font-family:'IBM Plex Mono',monospace; font-size:7px; letter-spacing:.11em; }
+.schoolwork-ui-title > strong { color:#293744; font-size:clamp(14px,1.45vw,21px); font-weight:700; letter-spacing:-.045em; line-height:1.2; }
+.schoolwork-ui-list { display:grid; gap:5px; margin-top:auto; }
+.schoolwork-ui-row { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 10px 10px 12px; border-left:3px solid #35b4dc; border-radius:5px; background:#eff5f8; color:#425261; font-size:10px; font-weight:600; }
+.schoolwork-ui-row span { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.schoolwork-ui-row strong { flex:none; color:#20a871; font-size:11px; }
+.schoolwork-ui-row strong.is-incomplete { color:#73808c; font-family:'IBM Plex Mono',monospace; font-size:8px; }
+.schoolwork-details { margin-top:auto; border-top:1px solid var(--line); }
+.schoolwork-details > summary { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:15px 0; color:var(--ink); font-size:12px; font-weight:700; cursor:pointer; list-style:none; }
+.schoolwork-details > summary::-webkit-details-marker { display:none; }
+.schoolwork-details > summary::marker { content:""; }
+.schoolwork-details > summary span { font-size:17px; color:var(--accent); transition:transform .2s; }
+.schoolwork-details[open] > summary span { transform:rotate(45deg); }
+.schoolwork-details > summary:hover { color:var(--accent); }
+.schoolwork-records { padding:8px 0 15px; border-top:1px solid var(--line); }
+.schoolwork-records-heading { margin:0 0 12px; color:var(--low); font-size:9px; }
+.schoolwork-records ul { display:grid; gap:0; list-style:none; margin:0; padding:0; }
+.schoolwork-records li { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:3px 12px; padding:11px 0; border-bottom:1px solid var(--line); font-size:12px; }
+.schoolwork-detail-name { min-width:0; color:var(--ink); font-weight:600; }
+.schoolwork-detail-score { color:var(--accent); font-family:'IBM Plex Mono',monospace; white-space:nowrap; }
+.schoolwork-detail-state { grid-column:1 / -1; color:var(--low); font-family:'IBM Plex Mono',monospace; font-size:9px; }
+@media (max-width:1100px) {
+  .schoolwork-preview { padding:11px; }
+  .schoolwork-ui { padding:10px; }
+  .schoolwork-ui-header { font-size:9px; }
+  .schoolwork-ui-row { padding:8px; font-size:9px; }
+}
+@media (max-width:800px) {
+  .schoolwork-grid .credential-card:last-child { grid-column:auto; }
+  .schoolwork-grid .credential-card:last-child .credential-preview { aspect-ratio:1.315 / 1; }
+  .schoolwork-ui-title > strong { font-size:clamp(16px,3vw,23px); }
+}
+@media (max-width:560px) {
+  .schoolwork-preview { padding:17px; }
+  .schoolwork-ui { padding:14px; }
+  .schoolwork-ui-header { font-size:11px; }
+  .schoolwork-ui-title > strong { font-size:21px; }
+  .schoolwork-ui-row { font-size:11px; }
+}
