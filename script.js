@@ -361,4 +361,121 @@ initReflectionBooks();
     revealItems.forEach((item) => revealObserver.observe(item));
     root.classList.add('js-motion');
   }
+
+  // Nash-inspired gallery + PDF archive; native dialogs preserve Escape and focus trapping.
+  function initBenjoArchiveViewers() {
+    const imageLinks = Array.from(document.querySelectorAll('a[data-view-image]'));
+    const pdfLinks = Array.from(document.querySelectorAll('a[data-view-pdf]'));
+    if (!imageLinks.length && !pdfLinks.length) return;
+    if (!window.HTMLDialogElement || typeof HTMLDialogElement.prototype.showModal !== 'function') return;
+    const plainClick = event => !event.defaultPrevented && event.button === 0 &&
+      !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey;
+    let imageDialog = null, pdfDialog = null, previousFocus = null, currentImage = 0;
+    function restoreFocus() {
+      document.body.classList.remove('benjo-archive-open');
+      if (previousFocus && previousFocus.isConnected) previousFocus.focus({ preventScroll: true });
+      previousFocus = null;
+    }
+    function mountImageDialog() {
+      if (imageDialog) return;
+      imageDialog = document.createElement('dialog');
+      imageDialog.className = 'benjo-image-viewer';
+      imageDialog.setAttribute('aria-label', 'School Works photo gallery');
+      imageDialog.innerHTML = [
+        "<div class='benjo-image-panel'>",
+        "<div class='benjo-image-top'><span>BENJO / SCHOOL WORKS ARCHIVE</span><button type='button' class='benjo-image-close' aria-label='Close image viewer'>✕</button></div>",
+        "<div class='benjo-image-stage'><button type='button' class='benjo-image-prev' aria-label='Previous screenshot'>‹</button><img class='benjo-image-original' alt='Original schoolwork screenshot' draggable='false'><button type='button' class='benjo-image-next' aria-label='Next screenshot'>›</button></div>",
+        "<div class='benjo-image-bottom'><div><strong class='benjo-image-name'></strong><p class='benjo-image-caption'></p></div><span class='benjo-image-count' aria-live='polite'></span></div>",
+        "</div>"
+      ].join('');
+      document.body.appendChild(imageDialog);
+      imageDialog.querySelector('.benjo-image-close').addEventListener('click', () => imageDialog.close());
+      imageDialog.querySelector('.benjo-image-prev').addEventListener('click', () => switchImage(-1));
+      imageDialog.querySelector('.benjo-image-next').addEventListener('click', () => switchImage(1));
+      imageDialog.addEventListener('click', e => { if (e.target === imageDialog) imageDialog.close(); });
+      imageDialog.addEventListener('close', restoreFocus);
+      imageDialog.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); switchImage(-1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); switchImage(1); }
+      });
+      let startingX = null;
+      const stage = imageDialog.querySelector('.benjo-image-stage');
+      stage.addEventListener('touchstart', e => {
+        if (e.touches.length === 1) startingX = e.touches[0].clientX;
+      }, { passive: true });
+      stage.addEventListener('touchend', e => {
+        if (startingX === null || e.changedTouches.length !== 1) return;
+        const difference = e.changedTouches[0].clientX - startingX;
+        startingX = null;
+        if (Math.abs(difference) > 65) switchImage(difference < 0 ? 1 : -1);
+      }, { passive: true });
+    }
+    function showImage(index) {
+      currentImage = (index + imageLinks.length) % imageLinks.length;
+      const link = imageLinks[currentImage], photo = imageDialog.querySelector('.benjo-image-original');
+      photo.src = link.href;
+      photo.alt = link.querySelector('img')?.alt || link.dataset.viewTitle || 'Original screenshot';
+      imageDialog.querySelector('.benjo-image-name').textContent = link.dataset.viewTitle || 'School Works';
+      imageDialog.querySelector('.benjo-image-caption').textContent = link.dataset.viewSubtitle || 'Original CodeChum activity screenshot';
+      imageDialog.querySelector('.benjo-image-count').textContent =
+        String(currentImage + 1).padStart(2, '0') + ' / ' + String(imageLinks.length).padStart(2, '0');
+    }
+    function switchImage(delta) { showImage(currentImage + delta); }
+    imageLinks.forEach((link, index) => link.addEventListener('click', e => {
+      if (!plainClick(e)) return;
+      e.preventDefault();
+      mountImageDialog();
+      previousFocus = document.activeElement;
+      showImage(index);
+      imageDialog.showModal();
+      document.body.classList.add('benjo-archive-open');
+      imageDialog.querySelector('.benjo-image-close').focus({ preventScroll: true });
+    }));
+    function mountPdfDialog() {
+      if (pdfDialog) return;
+      pdfDialog = document.createElement('dialog');
+      pdfDialog.className = 'benjo-pdf-viewer';
+      pdfDialog.setAttribute('aria-label', 'Original certificate PDF viewer');
+      pdfDialog.innerHTML = [
+        "<div class='benjo-pdf-panel'>",
+        "<button type='button' class='benjo-pdf-close' aria-label='Close PDF viewer'>✕</button>",
+        "<div class='benjo-pdf-header'><span class='benjo-pdf-kicker'>BENJO TERRADO / CREDENTIAL ARCHIVE</span><h2 class='benjo-pdf-name'></h2><p>Original completion certificate · Non-credit independent learning</p></div>",
+        "<div class='benjo-pdf-document'><iframe class='benjo-pdf-iframe' title='Original certificate PDF' loading='lazy'></iframe><div class='benjo-pdf-loading' role='status'>Opening certificate…</div></div>",
+        "<div class='benjo-pdf-footer'><a class='benjo-pdf-download' href='#' download>Download PDF ↓</a><a class='benjo-pdf-external' href='#' target='_blank' rel='noopener noreferrer'>Open in new tab ↗</a><span>ORIGINAL DOCUMENT / PDF</span></div>",
+        "</div>"
+      ].join('');
+      document.body.appendChild(pdfDialog);
+      const frame = pdfDialog.querySelector('.benjo-pdf-iframe');
+      const loading = pdfDialog.querySelector('.benjo-pdf-loading');
+      frame.addEventListener('load', () => { loading.hidden = true; });
+      pdfDialog.querySelector('.benjo-pdf-close').addEventListener('click', () => pdfDialog.close());
+      pdfDialog.addEventListener('click', e => { if (e.target === pdfDialog) pdfDialog.close(); });
+      pdfDialog.addEventListener('close', () => {
+        frame.removeAttribute('src');
+        loading.hidden = false;
+        restoreFocus();
+      });
+    }
+    pdfLinks.forEach(link => link.addEventListener('click', e => {
+      if (!plainClick(e)) return;
+      e.preventDefault();
+      mountPdfDialog();
+      previousFocus = document.activeElement;
+      const url = link.href;
+      const title = link.dataset.pdfTitle || 'Original certificate';
+      pdfDialog.querySelector('.benjo-pdf-name').textContent = title;
+      pdfDialog.querySelector('.benjo-pdf-iframe').title = title + ' — PDF';
+      const download = pdfDialog.querySelector('.benjo-pdf-download');
+      download.href = url;
+      download.download = decodeURIComponent(new URL(url).pathname.split('/').pop() || 'certificate.pdf');
+      pdfDialog.querySelector('.benjo-pdf-external').href = url;
+      pdfDialog.querySelector('.benjo-pdf-loading').hidden = false;
+      pdfDialog.showModal();
+      document.body.classList.add('benjo-archive-open');
+      pdfDialog.querySelector('.benjo-pdf-iframe').src = url + '#toolbar=1&navpanes=0&view=FitH';
+      pdfDialog.querySelector('.benjo-pdf-close').focus({ preventScroll: true });
+    }));
+  }
+  initBenjoArchiveViewers();
+
 })();

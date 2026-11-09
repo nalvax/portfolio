@@ -754,3 +754,49 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 @media(max-width:800px){.schoolwork-grid .credential-card:last-child{grid-column:auto}.schoolwork-grid .credential-card:last-child .credential-preview{aspect-ratio:1.315/1}}
 @media(hover:none),(pointer:coarse){.schoolwork-photo-label{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.schoolwork-photo img,.schoolwork-photo-label{transition:none!important;transform:none!important}}
+
+/* Nash-style immersive viewers, adapted to Benjo's established palette. */
+body.benjo-archive-open{overflow:hidden}
+.benjo-image-viewer{width:min(1140px,96vw);max-width:none;max-height:94dvh;margin:auto;padding:0;border:1px solid #567060;border-radius:11px;background:#121b16;color:#eff4ec;box-shadow:0 36px 130px #000b;overflow:hidden}
+.benjo-image-viewer::backdrop{background:#030705e8;backdrop-filter:blur(9px)}
+.benjo-image-panel{display:flex;flex-direction:column;max-height:94dvh}
+.benjo-image-top,.benjo-image-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;flex:none;padding:16px clamp(17px,2.2vw,28px)}
+.benjo-image-top{border-bottom:1px solid #3a5041}
+.benjo-image-bottom{align-items:flex-start;border-top:1px solid #3a5041}
+.benjo-image-top>span,.benjo-image-count{font:600 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.09em;color:#c0d8c5}
+.benjo-image-close,.benjo-image-prev,.benjo-image-next{flex:none;display:grid;place-items:center;border:1px solid #688876;border-radius:50%;background:#1f3126;color:#f2f7ef;cursor:pointer;transition:background .2s}
+.benjo-image-close{width:39px;height:39px;font-size:18px}
+.benjo-image-prev,.benjo-image-next{position:absolute;z-index:1;top:50%;transform:translateY(-50%);width:44px;height:44px;font:300 30px/1 'DM Sans',sans-serif}
+.benjo-image-prev{left:15px}.benjo-image-next{right:15px}
+.benjo-image-close:hover,.benjo-image-prev:hover,.benjo-image-next:hover{background:#335842}
+.benjo-image-stage{position:relative;display:flex;align-items:center;justify-content:center;flex:1 1 auto;min-height:150px;padding:14px 73px;overflow:hidden;background:radial-gradient(circle at 50% 36%,#283e32,#0b110d 79%)}
+.benjo-image-original{display:block;max-width:100%;max-height:min(70dvh,750px);width:auto;height:auto;object-fit:contain;user-select:none;box-shadow:0 9px 44px #0007}
+.benjo-image-name{display:block;font:700 clamp(15px,1.7vw,21px)/1.25 'DM Sans',sans-serif}
+.benjo-image-caption{margin:5px 0 0;color:#b3c4b6;font:400 12px/1.4 'DM Sans',sans-serif}
+.benjo-image-count{white-space:nowrap}
+.benjo-image-viewer button:focus-visible,.benjo-pdf-viewer button:focus-visible{outline:2px solid #a6d2b2;outline-offset:3px}
+.benjo-pdf-viewer{width:min(960px,96vw);max-width:none;height:min(95dvh,1040px);max-height:none;margin:auto;padding:0;border:0;border-radius:4px;background:#f9faf7;color:#122019;box-shadow:0 34px 130px #0009;overflow:hidden}
+.benjo-pdf-viewer::backdrop{background:#050a06cc;backdrop-filter:blur(9px)}
+.benjo-pdf-panel{position:relative;display:flex;flex-direction:column;min-height:0;height:100%}
+.benjo-pdf-close{position:absolute;right:15px;top:15px;z-index:2;display:grid;place-items:center;width:37px;height:37px;border:1px solid #ced8d0;border-radius:50%;background:#fff;color:#182c20;font-size:19px;cursor:pointer}
+.benjo-pdf-close:hover{background:#e8eee8}
+.benjo-pdf-header{flex:none;padding:clamp(26px,4vw,44px) clamp(20px,4vw,46px) 20px}
+.benjo-pdf-kicker{display:block;font:650 10px/1.4 'IBM Plex Mono',monospace;letter-spacing:.11em;color:#617969}
+.benjo-pdf-name{margin:18px 46px 12px 0;color:#13291c;font:500 clamp(24px,3vw,42px)/1.1 'DM Sans',sans-serif;letter-spacing:-.05em}
+.benjo-pdf-header p{margin:0;color:#6d786f;font:400 13px/1.6 'DM Sans',sans-serif}
+.benjo-pdf-document{position:relative;display:flex;flex:1;min-height:190px;margin:0 clamp(20px,4vw,46px);background:#242e28;overflow:hidden}
+.benjo-pdf-iframe{display:block;width:100%;height:100%;min-height:0;border:0;background:#242e28}
+.benjo-pdf-loading{position:absolute;inset:0;display:grid;place-items:center;background:#28302b;color:#d0dbd3;pointer-events:none;font:500 12px/1.4 'DM Sans',sans-serif}
+.benjo-pdf-loading[hidden]{display:none}
+.benjo-pdf-footer{display:flex;align-items:center;flex-wrap:wrap;flex:none;gap:12px 25px;padding:17px clamp(20px,4vw,46px) 25px}
+.benjo-pdf-footer a{font:600 12px/1.3 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap}
+.benjo-pdf-download{padding:13px 19px;border-radius:99px;background:#162c20;color:#fff!important}
+.benjo-pdf-download:hover{background:#365c42}
+.benjo-pdf-external{padding:9px 0;border-bottom:1px solid #97a79b;color:#172a1e!important}
+.benjo-pdf-footer>span{margin-left:auto;color:#7f8b82;font:500 9px/1.4 'IBM Plex Mono',monospace}
+.certificates-section .credential-preview[data-view-pdf]{position:relative;cursor:zoom-in}
+.certificates-section .credential-preview[data-view-pdf]::after{content:'VIEW PDF  ↗';position:absolute;bottom:15px;left:15px;padding:11px 15px;border:1px solid #b9d0bf;background:#14271d;color:#eef5ec;font:600 10px/1.2 'IBM Plex Mono',monospace;letter-spacing:.06em;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;pointer-events:none}
+.certificates-section .credential-preview[data-view-pdf]:is(:hover,:focus-visible)::after{opacity:1;transform:none}
+@media(max-width:700px){.benjo-image-viewer{width:100vw;max-height:100dvh;border-radius:0}.benjo-image-panel{height:100dvh;max-height:100dvh}.benjo-image-stage{padding:10px 47px}.benjo-image-original{max-height:75dvh}.benjo-image-prev,.benjo-image-next{width:36px;height:41px;font-size:25px}.benjo-image-prev{left:4px}.benjo-image-next{right:4px}.benjo-image-top>span{font-size:9px}.benjo-pdf-viewer{width:100vw;height:100dvh;border-radius:0}.benjo-pdf-header{padding:31px 19px 19px}.benjo-pdf-name{font-size:clamp(23px,6vw,35px)}.benjo-pdf-document{margin:0 11px}.benjo-pdf-footer{padding:13px 17px 20px;gap:10px 17px}.benjo-pdf-footer>span{flex-basis:100%;margin-left:0}}
+@media(hover:none),(pointer:coarse){.certificates-section .credential-preview[data-view-pdf]::after{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.benjo-image-close,.benjo-image-prev,.benjo-image-next,.certificates-section .credential-preview[data-view-pdf]::after{transition:none}}
