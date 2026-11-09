@@ -10,7 +10,7 @@
     const light = root.classList.contains('light');
     themeButton.textContent = light ? '☾' : '☼';
     themeButton.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', light ? '#f2f1e9' : '#111716');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', light ? '#f6f5ef' : '#111713');
   };
   updateThemeButton();
   themeButton.addEventListener('click', () => {
