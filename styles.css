@@ -166,11 +166,10 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
 .contact-section .section-heading { margin-bottom: 52px; }
 .contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .92fr); gap: clamp(50px, 6vw, 100px); align-items: start; }
 .contact-copy { min-width: 0; min-height: 485px; display: flex; flex-direction: column; align-items: flex-start; padding: 17px 0 0; }
-.contact-label { display: block; margin-bottom: 27px; color: var(--accent); }
-.email-link { display: flex; flex-direction: column; max-width: 100%; padding: 0 0 20px; border-bottom: 1px solid var(--line); font-size: clamp(28px, 2.75vw, 42px); font-weight: 500; line-height: 1.22; letter-spacing: -.06em; overflow-wrap: anywhere; }
-.email-link > span { display: block; }
-.email-link .email-domain { color: var(--accent); }
-.email-link .email-arrow { display: inline-block; margin-left: .2em; font-size: .7em; color: var(--accent); transition: transform .2s; }
+.contact-label { display: block; margin-bottom: 20px; color: var(--accent); }
+.email-link { display: inline-flex; align-items: center; justify-content: flex-start; gap: 12px; max-width: 100%; padding: 0 0 13px; border-bottom: 1px solid var(--line); font-size: clamp(18px, 1.55vw, 25px); font-weight: 500; line-height: 1.4; letter-spacing: -.045em; white-space: nowrap; }
+.email-link .email-address { display: inline; white-space: nowrap; }
+.email-link .email-arrow { display: inline-block; flex: none; font-size: .82em; color: var(--accent); transition: transform .2s; }
 .email-link:hover .email-arrow { transform: translate(3px, -3px); }
 .email-link:hover { color: var(--ink); }
 .contact-copy > p { max-width: 370px; margin: 24px 0 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
@@ -243,7 +242,7 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
   .contact-layout { gap: 36px; }
   .contact-copy { min-height: 0; padding: 0; }
   .contact-fine { margin-top: 25px; padding-top: 0; }
-  .email-link { font-size: clamp(28px, 6.4vw, 39px); }
+  .email-link { font-size: clamp(16px, 3.7vw, 20px); gap: 8px; }
   .contact-form { padding: 25px; }
   .work-item { grid-template-columns: 52px 1fr; gap: 12px 18px; padding: 27px 0; }
   .work-item:hover { padding-left: 0; }
@@ -266,7 +265,7 @@ em, .hero-manifesto i, .about-lead em { font-family: 'Instrument Serif', Georgia
   .identity-bottom { font-size: 11px; }
   .tabs { gap: 16px; }
   .tabs button { font-size: 11px; }
-  .email-link { font-size: clamp(26px, 6.4vw, 33px); }
+  .email-link { font-size: clamp(14px, 4.1vw, 17px); gap: 6px; }
   .footer-content { flex-wrap: wrap; }
   .footer-content p { order: 3; width: 100%; }
   .footer-content p span { display: block; margin: 4px 0 0; }
